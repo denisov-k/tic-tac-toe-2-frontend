@@ -1,0 +1,18 @@
+{
+  "parserOptions": {
+    "parser": "@babel/eslint-parser",
+    "requireConfigFile": false,
+    "ecmaVersion": 8,
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "no-console": "off",
+    "no-unused-vars": "off",
+    "vue/multi-word-component-names": "off"
+  },
+  "extends": [
+    "plugin:vue/essential"
+  ]
+}
