@@ -1,6 +1,8 @@
 <template>
   <main>
     <user-info></user-info>
+    <balance></balance>
+    <teaser></teaser>
     <claim></claim>
   </main>
 </template>
@@ -8,13 +10,16 @@
 <script>
 
   import UserInfo from "@/components/Home/UserInfo";
+  import Balance from "@/components/Home/Balance";
   import Claim from "@/components/Home/Claim";
+  import Teaser from "@/components/Home/Teaser";
   export default {
     name: "Home",
     components: {
+      Teaser,
       Claim,
-      UserInfo
-
+      UserInfo,
+      Balance
     },
     data() {
       return {

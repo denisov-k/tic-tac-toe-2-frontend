@@ -3,8 +3,8 @@
     <div class="footer-content">
       <div class="navigation-button" v-for="button in navigationButtons"
            v-on:click="goTo(button.name)" :class="{'selected': isButtonSelected(button)}">
+        <inline-svg :src="button.image" class="image" />
         <span>{{ button.caption }}</span>
-        <!--<inline-svg :src="require('@/assets/widget/expand.svg')" />-->
       </div>
     </div>
   </footer>
@@ -18,9 +18,9 @@ export default {
   data() {
     return {
       navigationButtons: [
-        { name: 'home', caption: this.$t('home') },
-        { name: 'tasks', caption: this.$t('tasks') },
-        { name: 'frens', caption: this.$t('frens') },
+        { name: 'home', caption: this.$t('home'), image: require('@/assets/home.svg') },
+        { name: 'tasks', caption: this.$t('tasks'), image: require('@/assets/tasks.svg') },
+        { name: 'frens', caption: this.$t('frens'), image: require('@/assets/frens.svg') },
       ]
     }
   },
@@ -29,11 +29,7 @@ export default {
   },
   methods: {
     goTo(route) {
-      console.log(this.$route.name, route)
       this.$router.push({ name: route });
-      this.$nextTick();
-      this.$forceUpdate();
-
     },
     isButtonSelected(button) {
 
@@ -63,7 +59,7 @@ export default {
 
 <style scoped>
   .layouts--footer {
-    margin-bottom: 5px;
+
   }
   .footer-content {
     display: flex;
@@ -71,12 +67,24 @@ export default {
     justify-content: space-around;
   }
   .navigation-button {
-    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
     font-weight: 600;
     cursor: pointer;
     color: #898989;
+    align-items: center;
   }
   .navigation-button.selected {
     color: white;
+  }
+  .navigation-button .image {
+    stroke: #898989;
+    width: 24px;
+    height: 24px;
+    margin-bottom: 2px;
+  }
+  .navigation-button.selected .image{
+    stroke: white;
   }
 </style>

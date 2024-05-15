@@ -52,7 +52,7 @@ export default {
     display: flex;
     flex-direction: column;
     overflow: auto;
-    max-width: 414px;
+    max-width: 450px;
     margin: auto;
     background: #000000;
     height: 100%;

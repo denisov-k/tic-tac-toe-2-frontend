@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="userinfo">
     Username
   </div>
 </template>
@@ -11,5 +11,9 @@
 </script>
 
 <style scoped>
-
+  #userinfo {
+    font-size: 16px;
+    font-weight: 600;
+    padding: 20px;
+  }
 </style>

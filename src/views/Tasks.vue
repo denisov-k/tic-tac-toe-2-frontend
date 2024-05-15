@@ -13,7 +13,7 @@
       return {}
     },
     created() {
-      console.log('Task')
+
     },
     methods: {}
   }
