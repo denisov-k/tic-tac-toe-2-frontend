@@ -1,6 +1,6 @@
 <template>
   <main>
-    Tasks
+    Coming soon...
   </main>
 </template>
 
@@ -27,7 +27,7 @@
     flex-direction: column;
     padding: 5px;
     flex: auto;
-    justify-content: space-between;
+    justify-content: center;
   }
 </style>
 

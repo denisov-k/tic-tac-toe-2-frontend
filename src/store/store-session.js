@@ -10,7 +10,7 @@ const Session = {
   },
   mutations: {
     [Mutations.SET_USER](state, user) {
-      state.user = { ...state.user, ...user };
+      state.user = user;
     },
     [Mutations.UPDATE_STATE](state) {
       state.lastUpdate = (new Date()).toDateString();
@@ -20,11 +20,11 @@ const Session = {
     [Actions.AUTH](context) {
       let service = new UsersService();
 
-      /*return service.getCurrent().then(async (user) => {
+      return service.getCurrent().then(async (user) => {
         context.commit(Mutations.SET_USER, user);
       }).catch(() => {
         context.commit(Mutations.SET_USER, {});
-      })*/
+      })
     },
     [Actions.LOGOUT](context, baseURL) {
       //window.location.href = Config.data.api.http.logoutURL

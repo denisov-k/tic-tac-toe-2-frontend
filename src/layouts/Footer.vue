@@ -1,7 +1,7 @@
 <template>
   <footer class="layouts--footer">
     <div class="footer-content">
-      <div class="navigation-button" v-for="button in navigationButtons"
+      <div class="navigation-button" v-for="(button, key) in navigationButtons" :key="key"
            v-on:click="goTo(button.name)" :class="{'selected': isButtonSelected(button)}">
         <inline-svg :src="button.image" class="image" />
         <span>{{ button.caption }}</span>
@@ -29,7 +29,8 @@ export default {
   },
   methods: {
     goTo(route) {
-      this.$router.push({ name: route });
+      if (this.$route.name !== route)
+        this.$router.push({ name: route });
     },
     isButtonSelected(button) {
 

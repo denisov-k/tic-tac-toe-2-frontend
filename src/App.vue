@@ -51,11 +51,12 @@ export default {
     color: white;
     display: flex;
     flex-direction: column;
-    overflow: auto;
+    /*overflow: auto;*/
     max-width: 450px;
     margin: auto;
     background: #000000;
     height: 100%;
+    position: relative;
   }
 
 </style>

@@ -1,12 +1,17 @@
 <template>
   <div id="userinfo">
-    Username
+    {{ user.first_name }}
   </div>
 </template>
 
 <script>
   export default {
-    name: "UserInfo"
+    name: "UserInfo",
+    computed: {
+      user() {
+        return this.$store.state.session.user;
+      }
+    }
   }
 </script>
 

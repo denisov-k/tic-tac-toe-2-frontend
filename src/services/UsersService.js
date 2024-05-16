@@ -23,7 +23,19 @@ export default class UsersService extends Service {
   }
 
   getCurrent() {
-    return this.transport.request(`auth/identify`, {}, (res) => res.data,
-      'get', {withCredentials: true })
+    Telegram.WebApp.ready();
+    Telegram.WebApp.expand();
+
+    console.log(Telegram)
+
+    let user = Telegram.WebApp.initDataUnsafe.user;
+
+    if (!user)
+      return Promise.reject('No have user data');
+
+    return Promise.resolve(user);
+
+    return this.transport.request(`auth/identify`, user, (res) => res.data,
+      'post', {withCredentials: true })
   }
 }
