@@ -12,6 +12,9 @@ const Session = {
     [Mutations.SET_USER](state, user) {
       state.user = user;
     },
+    [Mutations.SET_TEAM](state, team) {
+      state.user.team = team;
+    },
     [Mutations.UPDATE_STATE](state) {
       state.lastUpdate = (new Date()).toDateString();
     }
@@ -23,7 +26,16 @@ const Session = {
       return service.getCurrent().then(async (user) => {
         context.commit(Mutations.SET_USER, user);
       }).catch(() => {
-        context.commit(Mutations.SET_USER, {});
+        context.commit(Mutations.SET_USER, { first_name: 'test' });
+      })
+    },
+    [Actions.SET_TEAM](context, team) {
+      let service = new UsersService();
+
+      return service.chooseTeam(team).then(async () => {
+        return service.getCurrent().then(async (user) => {
+          context.commit(Mutations.SET_USER, user);
+        })
       })
     },
     [Actions.LOGOUT](context, baseURL) {

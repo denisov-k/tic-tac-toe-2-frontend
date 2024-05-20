@@ -2,8 +2,8 @@
   <div id="invite-frame" v-if="isShowing" v-on:click.self="hide">
     <div class="invite-popup">
       <span class="caption">{{ $t('invite') }}</span>
-      <div class="button">{{ $t('share') }}</div>
-      <div class="button">{{ $t('copy') }}</div>
+      <div class="button" v-on:click="onShare">{{ $t('share') }}</div>
+      <div class="button" v-on:click="onCopy">{{ $t('copy') }}</div>
     </div>
   </div>
 </template>
@@ -13,7 +13,8 @@
     name: "InviteFrame",
     data() {
       return {
-        isShowing: false
+        isShowing: false,
+        baseURL: "https://t.me/TicTacTon_bot/tic_tac_ton"
       }
     },
     methods: {
@@ -22,6 +23,16 @@
       },
       hide() {
         this.isShowing = false;
+      },
+      onCopy() {
+        navigator.clipboard.writeText(this.baseURL + '?startapp=' + this.$store.state.session.user.id);
+        this.hide();
+      },
+      onShare() {
+        let refURL = this.baseURL + '?startapp=' + this.$store.state.session.user.id;
+        let text = 'Come with me!'
+        Telegram.WebApp.openTelegramLink('https://t.me/share/url?url=' + refURL + '&text=' + text);
+        this.hide();
       }
     }
   }

@@ -24,7 +24,7 @@ export default new Router({
         visible: true,
         authGroups: [],
       },
-      children: [],
+      children: []
     },
     {
       path: '/frens',
@@ -43,6 +43,13 @@ export default new Router({
         authGroups: [],
       },
       children: [],
+      /*beforeEnter: (to, from, next) => {
+        if (store.state.session.user.team) {
+          next();
+        } else {
+          next('onboarding');
+        }
+      }*/
     },
     {
       path: '/tasks',
@@ -61,6 +68,37 @@ export default new Router({
         authGroups: [],
       },
       children: [],
+      /*beforeEnter: (to, from, next) => {
+        if (store.state.session.user.team) {
+          next();
+        } else {
+          next('onboarding');
+        }
+      }*/
+    },
+    {
+      path: '/onboarding',
+      name: 'onboarding',
+      components: {
+        default: () => import('@/views/Onboarding.vue')
+      },
+      meta: {
+        title: 'Onboarding',
+        description: '',
+        viewTitle: '',
+        viewDescription: '',
+        icon: '',
+        visible: true,
+        authGroups: [],
+      },
+      children: [],
+      /*beforeEnter: (to, from, next) => {
+        if (!store.state.session.user.team) {
+          next();
+        } else {
+          next('home');
+        }
+      }*/
     }
   ]
 })

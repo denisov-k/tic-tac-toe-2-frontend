@@ -1,13 +1,8 @@
 <template>
-  <div id="claim">
-
+  <div id="blow-up">
     <div class="buttons">
-      <div class="button red">
-        {{ $t('red') }}
-      </div>
-      <span class="caption">Claim</span>
-      <div class="button blue">
-        {{ $t('blue') }}
+      <div class="button">
+        {{ $t('blow_up') }}
       </div>
     </div>
   </div>
@@ -15,12 +10,12 @@
 
 <script>
   export default {
-    name: "Claim"
+    name: "BlowUp"
   }
 </script>
 
 <style scoped>
-  #claim {
+  #blow-up {
     width: calc(100% - 20px);
     /*margin-bottom: 10px;*/
   }
@@ -29,11 +24,6 @@
     font-weight: 600;
     font-size: 14px;
     margin: 0px 15px;
-  }
-  .buttons {
-    display: flex;
-    align-items: center;
-    color: black;
   }
   .button {
     flex: auto;
@@ -44,24 +34,18 @@
     font-weight: 600;
     font-size: 16px;
     margin: 10px;
-  }
-  .red {
-    background-color: #ef1212;
-  }
-  .blue {
-    background-color: #0079cd;
+    background-color: #ffffff;
+    color: black;
   }
 </style>
 
 <i18n>
   {
     "en": {
-      "red": "Red",
-      "blue": "Blue"
+      "blow_up": "Blow up"
     },
     "ru": {
-      "red": "Красные",
-      "blue": "Синие"
+      "blow_up": "Blow up"
     }
   }
 </i18n>

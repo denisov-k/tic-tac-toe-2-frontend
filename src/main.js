@@ -20,6 +20,16 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
+router.beforeEach((to, from, next) => {
+  let team = store.state.session.user.team;
+
+  if (to.name === 'onboarding' || team) {
+    next();
+  } else {
+    next('onboarding');
+  }
+});
+
 Config.init().then(() => {
   store.dispatch(SessionActions.AUTH).then(() => {
     new Vue({

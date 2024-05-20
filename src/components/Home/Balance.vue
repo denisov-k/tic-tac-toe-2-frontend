@@ -9,7 +9,12 @@
     name: "Balance",
     data: () => {
       return {
-        value: 0
+        // value: 0
+      }
+    },
+    computed: {
+      value() {
+        return this.$store.state.session.user.balance;
       }
     }
   }
@@ -17,7 +22,8 @@
 
 <style scoped>
   #balance {
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 600;
+    padding: 20px;
   }
 </style>

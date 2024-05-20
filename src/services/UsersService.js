@@ -7,35 +7,26 @@ export default class UsersService extends Service {
    * @return {?}    then(data)
    * data ~ @see userEntity()
    */
-  async signUp() {
-    /*const tonConnect = new TonConnect({
-      manifestUrl: Config.data.api.ton.manifestUrl,
-
-    });
-    await tonConnect.restoreConnection();
-
-    if (!tonConnect.account)
-      throw new Error('Wallet is not connected');*/
-
-    return this.transport.request(`auth/sign_up`, tonConnect.account, () => {
-
-    }, 'post', {withCredentials: true });
-  }
-
   getCurrent() {
     Telegram.WebApp.ready();
     Telegram.WebApp.expand();
+    Telegram.WebApp.setBackgroundColor('#000000');
+    Telegram.WebApp.setHeaderColor('#000000');
 
-    console.log(Telegram)
+    let user = {
+      ...Telegram.WebApp.initDataUnsafe.user,
+      ref: Telegram.WebApp.initDataUnsafe.start_param
+    };
 
-    let user = Telegram.WebApp.initDataUnsafe.user;
-
-    if (!user)
+    if (!user.id)
       return Promise.reject('No have user data');
 
-    return Promise.resolve(user);
-
     return this.transport.request(`auth/identify`, user, (res) => res.data,
+      'post', {withCredentials: true })
+  }
+
+  chooseTeam(team) {
+    return this.transport.request(`onboarding/choose_team`, { team }, (res) => res.data,
       'post', {withCredentials: true })
   }
 }

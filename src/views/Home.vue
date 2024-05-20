@@ -1,9 +1,13 @@
 <template>
   <main>
-    <user-info></user-info>
-    <balance></balance>
+    <div class="header">
+      <user-info></user-info>
+      <balance></balance>
+    </div>
+
     <teaser></teaser>
-    <claim></claim>
+    <stats></stats>
+    <blow-up></blow-up>
   </main>
 </template>
 
@@ -11,13 +15,15 @@
 
   import UserInfo from "@/components/Home/UserInfo";
   import Balance from "@/components/Home/Balance";
-  import Claim from "@/components/Home/Claim";
+  import BlowUp from "@/components/Home/BlowUp";
   import Teaser from "@/components/Home/Teaser";
+  import Stats from "@/components/Home/Stats";
   export default {
     name: "Home",
     components: {
+      Stats,
       Teaser,
-      Claim,
+      BlowUp,
       UserInfo,
       Balance
     },
@@ -45,6 +51,12 @@
     flex: auto;
     justify-content: space-between;
     align-items: center;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
   }
 </style>
 
