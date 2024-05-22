@@ -43,13 +43,13 @@ export default new Router({
         authGroups: [],
       },
       children: [],
-      /*beforeEnter: (to, from, next) => {
+      beforeEnter: (to, from, next) => {
         if (store.state.session.user.team) {
           next();
         } else {
           next('onboarding');
         }
-      }*/
+      }
     },
     {
       path: '/tasks',
@@ -68,13 +68,13 @@ export default new Router({
         authGroups: [],
       },
       children: [],
-      /*beforeEnter: (to, from, next) => {
+      beforeEnter: (to, from, next) => {
         if (store.state.session.user.team) {
           next();
         } else {
           next('onboarding');
         }
-      }*/
+      }
     },
     {
       path: '/onboarding',
@@ -92,13 +92,13 @@ export default new Router({
         authGroups: [],
       },
       children: [],
-      /*beforeEnter: (to, from, next) => {
+      beforeEnter: (to, from, next) => {
         if (!store.state.session.user.team) {
           next();
         } else {
           next('home');
         }
-      }*/
+      }
     }
   ]
 })

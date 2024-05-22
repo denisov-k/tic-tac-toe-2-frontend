@@ -26,7 +26,27 @@ export default class UsersService extends Service {
   }
 
   chooseTeam(team) {
-    return this.transport.request(`onboarding/choose_team`, { team }, (res) => res.data,
+    return this.transport.request(`game/choose_team`, { team }, (res) => res.data,
+      'post', {withCredentials: true })
+  }
+
+  blowUp() {
+    return this.transport.request(`game/blow_up`, {}, (res) => res.data,
+      'post', {withCredentials: true })
+  }
+
+  getRefs() {
+    return this.transport.request(`game/referrals`, {}, (res) => res.data,
+      'get', {withCredentials: true })
+  }
+
+  getTasks() {
+    return this.transport.request(`game/tasks`, {}, (res) => res.data,
+      'get', {withCredentials: true })
+  }
+
+  claimTask(taskId) {
+    return this.transport.request(`game/tasks`, { taskId }, (res) => res.data,
       'post', {withCredentials: true })
   }
 }

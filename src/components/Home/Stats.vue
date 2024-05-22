@@ -1,6 +1,6 @@
 <template>
   <div id="stats">
-    <span class="first-team">{{ firstTeam }}</span> vs <span class="second-team">{{ secondTeam }}</span>
+    <span class="first-team">{{ firstTeam }}</span><span> vs </span><span class="second-team">{{ secondTeam }}</span>
   </div>
 </template>
 
@@ -12,18 +12,22 @@
     data() {
       return {
         stats: [],
-        service: null
+        service: null,
+        interval: null
       }
     },
     mounted() {
       this.service = new Service();
 
       this.updateStats();
-      setInterval(this.updateStats, 5000);
+      this.interval = setInterval(this.updateStats, 5000);
+    },
+    destroyed() {
+      clearInterval(this.interval);
     },
     methods: {
       updateStats() {
-        this.service.transport.request(`transactions/teams_balance`, null,
+        this.service.transport.request(`game/teams_balance`, null,
           (res) => {
             this.stats = res.data;
           },
