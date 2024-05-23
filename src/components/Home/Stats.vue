@@ -5,34 +5,10 @@
 </template>
 
 <script>
-  import Service from "@/services/Service";
-
   export default {
     name: "Stats",
-    data() {
-      return {
-        stats: [],
-        service: null,
-        interval: null
-      }
-    },
-    mounted() {
-      this.service = new Service();
-
-      this.updateStats();
-      this.interval = setInterval(this.updateStats, 5000);
-    },
-    destroyed() {
-      clearInterval(this.interval);
-    },
-    methods: {
-      updateStats() {
-        this.service.transport.request(`game/teams_balance`, null,
-          (res) => {
-            this.stats = res.data;
-          },
-          'get', {withCredentials: true })
-      }
+    props: {
+      stats: Array
     },
     computed: {
       firstTeam() {

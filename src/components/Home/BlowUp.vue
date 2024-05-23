@@ -1,8 +1,11 @@
 <template>
   <div id="blow-up">
     <div class="buttons">
-      <div class="button" v-on:click="blowUp" :class="{'enabled': enabled }">
-        {{ enabled ? $t('blow_up') : timerFormatted }}
+      <div class="button enabled" v-on:click="blowUp" v-if="enabled">
+        {{ $t('blow_up') }}
+      </div>
+      <div class="button" v-else>
+        {{ timerFormatted }}
       </div>
     </div>
   </div>
@@ -10,15 +13,18 @@
 
 <script>
   import Service from "@/services/UsersService";
-  import SessionActions from "@/store/store-session-actions";
 
   export default {
     name: "BlowUp",
+    props: {
+      afterClick: Function
+    },
     data() {
       return {
         enabled: true,
         timer: 0,
-        timerFormatted: ''
+        timerFormatted: '',
+        inAction: false
       }
     },
     mounted() {
@@ -27,14 +33,20 @@
       setInterval(this.reduceTimer, 1000);
     },
     methods: {
-      blowUp() {
+      async blowUp() {
+        if (this.inAction)
+          return;
+
+        this.inAction = true;
         this.service = new Service();
 
-        this.service.blowUp()
-            .then(() => {
-              this.$store.dispatch(SessionActions.AUTH);
-            })
-            .catch(() => {});
+        this.afterClick();
+
+        await this.service.blowUp();
+        await this.$store.dispatch('auth');
+
+        this.resetTimer();
+        this.inAction = false;
       },
       convertSecondsToTime(input) {
         const dateObj = new Date(input * 1000);
@@ -89,10 +101,10 @@
 <i18n>
   {
     "en": {
-      "blow_up": "Blow up"
+      "blow_up": "Blow up (+5 points)"
     },
     "ru": {
-      "blow_up": "Blow up"
+      "blow_up": "Blow up (+5 points)"
     }
   }
 </i18n>

@@ -1,6 +1,5 @@
 <template>
   <main>
-    <user-info></user-info>
     <choose-team></choose-team>
   </main>
 </template>
