@@ -1,12 +1,12 @@
 <template>
   <div id="choose-team">
+    <span class="caption">{{ $t('choose') }}</span>
     <div class="buttons">
       <div class="button red" v-on:click="chooseTeam('red')">
-        {{ $t('red') }}
+        <inline-svg :src="require('@/assets/images/onboarding/choose_red_team.svg')" class="icon" />
       </div>
-      <span class="caption">{{ $t('choose') }}</span>
       <div class="button blue" v-on:click="chooseTeam('blue')">
-        {{ $t('blue') }}
+        <inline-svg :src="require('@/assets/images/onboarding/choose_blue_team.svg')" class="icon" />
       </div>
     </div>
   </div>
@@ -39,11 +39,13 @@
     margin-bottom: 10px;*/
   }
   .caption {
-    color: #898989;
+    color: #fff;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 16px;
     margin: 0 15px;
     white-space-collapse: preserve-breaks;
+    display: flex;
+    justify-content: center;
   }
   .buttons {
     display: flex;
@@ -52,7 +54,7 @@
   }
   .button {
     flex: auto;
-    height: 60px;
+    height: 100px;
     border-radius: 10px;
     align-content: center;
     cursor: pointer;
@@ -60,25 +62,25 @@
     font-size: 16px;
     margin: 10px;
   }
+  svg.icon {
+    width: 100%;
+    height: 100%;
+  }
   .red {
-    background-color: #ef1212;
+
   }
   .blue {
-    background-color: #0079cd;
+
   }
 </style>
 
 <i18n>
   {
     "en": {
-      "red": "Red",
-      "blue": "Blue",
-      "choose": "Choose \r\n team"
+      "choose": "Select the fraction you \r\nwish to join"
     },
     "ru": {
-      "red": "Красные",
-      "blue": "Синие",
-      "choose": "Выбирай \r\n команду"
+      "choose": "Select the fraction you \r\nwish to join"
     }
   }
 </i18n>

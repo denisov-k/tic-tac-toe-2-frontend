@@ -4,39 +4,25 @@
       <span class="caption">{{ $t('invite') }}</span>
       <div class="button" v-on:click="onShare">{{ $t('share') }}</div>
       <div class="button" v-on:click="onCopy">{{ $t('copy') }}</div>
-      <span class="caption">{{ $t('your_refs') }}</span>
-      <div class="refs-list">
-        <div class="ref-item" v-for="ref in refs" :key="ref.id">
-          <span>{{ ref.first_name }}</span>
-        </div>
-      </div>
     </div>
   </div>
 </template>
 
 <script>
-  import Service from "@/services/UsersService";
-
   export default {
     name: "InviteFrame",
     data() {
       return {
         isShowing: false,
         baseURL: "https://t.me/TicTacTon_bot/tic_tac_ton",
-        refs: []
       }
     },
     mounted() {
-      this.service = new Service();
+
     },
     methods: {
       show() {
-
-        this.service.getRefs().then((refs) => {
-          this.refs = refs;
-          this.isShowing = true;
-        })
-
+        this.isShowing = true;
       },
       hide() {
         this.isShowing = false;
@@ -68,49 +54,35 @@
   .invite-popup {
     display: flex;
     flex-direction: column;
-    background-color: #3f3f3f;
-    border-radius: 10px 10px 0 0;
-    padding: 5px 0;
+    background-color: #151515;
+    /*border-radius: 10px 10px 0 0;*/
+    padding: 10px 0 30px 0;
   }
   .caption {
-    font-weight: 600;
     font-size: 20px;
-    padding: 12px 0 4px;
+    padding: 10px;
   }
   .button {
-    background-color: #121212;
-    font-weight: 600;
+    background-color: #04B75C;
     font-size: 14px;
-    border-radius: 8px;
-    margin: 5px 10px;
+    margin: 10px 10px;
     cursor: pointer;
-    height: 40px;
+    height: 35px;
     align-content: center;
+    box-shadow: 0 0 10px 1px #04B75C;
   }
-  .refs-list {
 
-  }
-  .ref-item {
-    background-color: #272727;
-    border-radius: 16px;
-    margin: 5px 10px;
-    height: 24px;
-    align-content: center;
-    font-weight: 600;
-  }
 </style>
 
 <i18n>
   {
     "en": {
       "invite": "Invite a fren",
-      "your_refs": "Your refs",
       "share": "Share link",
       "copy": "Copy link"
     },
     "ru": {
       "invite": "Invite a fren",
-      "your_refs": "Your refs",
       "share": "Share link",
       "copy": "Copy link"
     }

@@ -1,14 +1,13 @@
 <template>
-  <main>
-    <div class="header">
-      <user-info></user-info>
-      <balance></balance>
-    </div>
+  <main :class="userTeam === 'red' ? 'red': 'blue'">
+    <user-info></user-info>
+    <balance></balance>
 
     <teaser></teaser>
     <stats :stats="stats" v-if="stats"></stats>
     <blow-up :after-click="showAnimation"></blow-up>
     <blow-up-animation ref="animation"></blow-up-animation>
+    <slot name="footer"></slot>
   </main>
 </template>
 
@@ -61,6 +60,11 @@
         this.$refs['animation'].isShowing = true;
       }
     },
+    computed: {
+      userTeam() {
+        return this.$store.state.session.user.team;
+      }
+    }
   }
 </script>
 
@@ -69,16 +73,37 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 5px;
+    padding: 10px;
     flex: auto;
     justify-content: space-between;
     align-items: center;
+    background-size: 200% 200%;
+    animation: gradient-animation 40s ease infinite;
+  }
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+  }
+  main.red {
+
+    background: linear-gradient(210deg, #660029, #403909, #121316, #6e0a32);
+  }
+  main.blue {
+
+    background: linear-gradient(210deg,  #134d7e, #403909, #121316, #0d448e);
   }
 </style>
 

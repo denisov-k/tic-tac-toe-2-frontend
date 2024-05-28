@@ -13,15 +13,19 @@
 
 <style scoped>
   #invite-button {
-    width: calc(100% - 20px);
-    background-color: rgb(66, 157, 76);
-    border-radius: 10px;
-    color: black;
-    font-size: 20px;
-    font-weight: 600;
-    height: 80px;
+    width: calc(100% - 30px);
+    background-color: #04B75C;
+    box-sizing: border-box;
+    color: white;
+    font-size: 16px;
+    height: 50px;
     align-content: center;
     margin: 10px auto;
+    cursor: pointer;
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(to left, #ffffff, #04B75C);
+    box-shadow: 0 0 10px 3px #04B75C;
   }
 </style>
 

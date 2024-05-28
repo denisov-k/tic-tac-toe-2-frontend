@@ -1,7 +1,8 @@
 <template>
   <div id="userinfo">
+    <inline-svg v-if="user.team === 'red'" :src="require('@/assets/images/home/red-team.svg')" class="icon" />
+    <inline-svg v-else-if="user.team === 'blue'" :src="require('@/assets/images/home/blue-team.svg')" class="icon" />
     <span>{{ user.first_name }}</span>
-    <span class="team">{{ $t('team') }} {{ user.team }}</span>
   </div>
 </template>
 
@@ -20,13 +21,13 @@
   #userinfo {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     font-size: 16px;
     font-weight: 600;
-    padding: 20px;
+    /*padding: 20px;*/
   }
-  .team {
-    font-size: 12px;
+  svg.icon {
+    width: 80px;
+    height: 80px;
   }
 </style>
 

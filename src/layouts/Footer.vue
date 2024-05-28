@@ -18,9 +18,9 @@ export default {
   data() {
     return {
       navigationButtons: [
-        { name: 'home', caption: this.$t('home'), image: require('@/assets/home.svg') },
-        { name: 'tasks', caption: this.$t('tasks'), image: require('@/assets/tasks.svg') },
-        { name: 'frens', caption: this.$t('frens'), image: require('@/assets/frens.svg') },
+        { name: 'home', caption: this.$t('home'), image: require('@/assets/images/navigation/home.svg') },
+        { name: 'tasks', caption: this.$t('tasks'), image: require('@/assets/images/navigation/tasks.svg') },
+        { name: 'frens', caption: this.$t('frens'), image: require('@/assets/images/navigation/frens.svg') },
       ]
     }
   },
@@ -60,7 +60,8 @@ export default {
 
 <style scoped>
   .layouts--footer {
-
+    width: 100%;
+    background-color: #1212128a;
   }
   .footer-content {
     display: flex;
@@ -70,8 +71,8 @@ export default {
   .navigation-button {
     display: flex;
     flex-direction: column;
-    padding: 20px;
-    font-weight: 600;
+    padding: 15px;
+    /*font-weight: 600;*/
     cursor: pointer;
     color: #898989;
     align-items: center;
@@ -81,9 +82,9 @@ export default {
   }
   .navigation-button .image {
     stroke: #898989;
-    width: 24px;
-    height: 24px;
-    margin-bottom: 2px;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 5px;
   }
   .navigation-button.selected .image{
     stroke: white;

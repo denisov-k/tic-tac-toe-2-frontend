@@ -1,8 +1,10 @@
 <template>
   <main>
+    <inline-svg :src="require('@/assets/images/tasks/icon.svg')" class="icon"></inline-svg>
     <span class="header">{{availableTasksCount}} {{$t('header') }}</span>
     <span class="description">{{ $t('description') }}</span>
     <tasks-list :tasks="tasks" v-if="tasks.length"></tasks-list>
+    <slot name="footer"></slot>
   </main>
 </template>
 
@@ -40,20 +42,39 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 10px;
     flex: auto;
-    justify-content: center;
+    justify-content: space-between;
+    background: linear-gradient(210deg,#151515,#7e1363, #007777,#020202,#0d8e8e);
+    background-size: 200% 200%;
+    animation: gradient-animation 40s ease infinite;
+  }
+
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  .icon {
+    width: 80px;
+    height: 80px;
+    align-self: center;
   }
   .header {
-    font-weight: 600;
     font-size: 24px;
     padding: 10px;
+    font-weight: 600;
   }
   .description {
-    font-weight: 600;
-    font-size: 16px;
-    color: #9c9c9c;
-    padding: 10px 0;
+    font-size: 14px;
+    color: white;
+    padding: 0 50px;
   }
 </style>
 
@@ -61,11 +82,11 @@
   {
     "en": {
       "header": "tasks available",
-      "description": "We’ll reward you immediately with points after each task completion."
+      "description": "We’ll reward you immediately with points after each task completion"
     },
     "ru": {
       "header": "tasks available",
-      "description": "We’ll reward you immediately with points after each task completion."
+      "description": "We’ll reward you immediately with points after each task completion"
     }
   }
 </i18n>

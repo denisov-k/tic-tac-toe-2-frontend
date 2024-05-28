@@ -14,7 +14,6 @@
       return {
         steps: [
           { name: this.$t('steps.0.name'), description: this.$t('steps.0.description') },
-          { name: this.$t('steps.1.name'), description: this.$t('steps.1.description') },
           { name: this.$t('steps.2.name'), description: this.$t('steps.2.description') }
         ]
       }
@@ -30,11 +29,10 @@
     display: flex;
     flex-direction: column;
     padding: 10px 0;
-    font-size: 14px;
+    font-size: 13px;
   }
   .name {
-    font-weight: 600;
-    color: #429d4c;
+
   }
 </style>
 

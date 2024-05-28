@@ -1,8 +1,11 @@
 <template>
   <div id="app">
     <router-view name="header"></router-view>
-    <router-view :key="defaultViewKey" class="content"></router-view>
-    <router-view name="footer"></router-view>
+    <router-view :key="defaultViewKey" class="content">
+      <template v-slot:footer>
+        <router-view name="footer"></router-view>
+      </template>
+    </router-view>
   </div>
 </template>
 <script>
@@ -29,8 +32,8 @@ export default {
 <style src="../node_modules/flexboxgrid/dist/flexboxgrid.min.css"></style>
 <style>
   @font-face {
-    font-family: "SF Pro";
-    /*src: url('./assets/SFProDisplay-Regular.woff2');*/
+    font-family: "HelveticaNeueCyr";
+    src: url('~@/assets/fonts/HelveticaNeueCyr-Medium.ttf');
   }
 
   html, body {
@@ -44,9 +47,7 @@ export default {
   }
 
   #app {
-    font-family: "SF Pro", Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-family: "HelveticaNeueCyr",serif;
     text-align: center;
     color: white;
     display: flex;

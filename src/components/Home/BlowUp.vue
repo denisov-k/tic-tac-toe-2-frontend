@@ -1,5 +1,5 @@
 <template>
-  <div id="blow-up">
+  <div id="blow-up" :class="userTeam === 'red' ? 'red': 'blue'">
     <div class="buttons">
       <div class="button enabled" v-on:click="blowUp" v-if="enabled">
         {{ $t('blow_up') }}
@@ -72,39 +72,53 @@
         else
           this.timer = 0;
       }
+    },
+    computed: {
+      userTeam() {
+        return this.$store.state.session.user.team;
+      }
     }
   }
 </script>
 
 <style scoped>
   #blow-up {
-    width: calc(100% - 20px);
+    width: calc(100% - 30px);
     /*margin-bottom: 10px;*/
   }
   .button {
-    flex: auto;
-    height: 60px;
-    border-radius: 10px;
+    height: 50px;
     align-content: center;
-    font-weight: 600;
     font-size: 16px;
-    margin: 10px;
-    background-color: #5c5c5c;
-    color: black;
+    margin: 10px 0;
+    background-color: #151515;
+    color: white;
   }
   .button.enabled {
-    background-color: #ffffff;
     cursor: pointer;
+    border: 3px solid;
+    border-image-slice: 1;
   }
+  .red .button.enabled {
+    background-color: #FF0A47;
+    border-image-source: linear-gradient(to left, #ffffff, #FF0A47);
+    box-shadow: 0 0 10px 3px #FF0A47;
+  }
+  .blue .button.enabled {
+    background-color: #3BADFF;
+    border-image-source: linear-gradient(to left, #ffffff, #3BADFF);
+    box-shadow: 0 0 10px 3px #3BADFF;
+  }
+
 </style>
 
 <i18n>
   {
     "en": {
-      "blow_up": "Blow up (+5 points)"
+      "blow_up": "Blow up +5.000"
     },
     "ru": {
-      "blow_up": "Blow up (+5 points)"
+      "blow_up": "Blow up +5.000"
     }
   }
 </i18n>

@@ -1,6 +1,6 @@
 <template>
   <div id="teaser">
-    <inline-svg :src="require('@/assets/game.svg')" class="game-icon"></inline-svg>
+    <inline-svg :src="require('@/assets/images/home/game.svg')" class="game-icon"></inline-svg>
     <span class="caption-1">{{ $t('drop_game') }}</span>
     <span class="caption-2">{{ $t('coming_soon') }}</span>
   </div>
@@ -16,26 +16,24 @@
  #teaser {
    display: flex;
    flex-direction: column;
-   border: 4px solid #1e1e1e;
-   border-radius: 10px;
    aspect-ratio: 1;
    align-items: center;
-   padding: 10px;
    box-sizing: border-box;
  }
  .game-icon {
    fill: #535559;
+   margin: 5px 0;
+   width: 100px;
+   height: 100px;
  }
  span {
    color: #989999;
-   font-weight: 600;
  }
  .caption-1 {
-   font-size: 18px;
-   margin: 5px 0;
+   font-size: 13px;
  }
  .caption-2 {
-    font-size: 14px;
+    font-size: 13px;
  }
 </style>
 

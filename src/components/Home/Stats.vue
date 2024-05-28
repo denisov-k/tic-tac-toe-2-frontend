@@ -1,6 +1,10 @@
 <template>
   <div id="stats">
-    <span class="first-team">{{ firstTeam }}</span><span> vs </span><span class="second-team">{{ secondTeam }}</span>
+    <span class="first-team">{{ firstTeam }}</span>
+    <inline-svg :src="require('@/assets/images/home/blue-score.svg')" class="icon" />
+    <span> vs </span>
+    <inline-svg :src="require('@/assets/images/home/red-score.svg')" class="icon" />
+    <span class="second-team">{{ secondTeam }}</span>
   </div>
 </template>
 
@@ -12,11 +16,11 @@
     },
     computed: {
       firstTeam() {
-        let team = this.stats.find(item => item.team === 'red')
+        let team = this.stats.find(item => item.team === 'blue')
         return team ? team.total_balance : 0
       },
       secondTeam() {
-        let team = this.stats.find(item => item.team === 'blue')
+        let team = this.stats.find(item => item.team === 'red')
         return team ? team.total_balance : 0
       }
     }
@@ -25,14 +29,19 @@
 
 <style scoped>
   #stats {
-    font-size: 24px;
-    font-weight: 600;
-    padding: 20px;
+    font-size: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
   }
   .first-team {
-    color: #ef1212;
+    color: #3BADFF;
   }
   .second-team {
-    color: #0079cd;
+    color: #FF0A47;
+  }
+  svg.icon {
+    width: 36px;
+    height: 36px;
   }
 </style>
