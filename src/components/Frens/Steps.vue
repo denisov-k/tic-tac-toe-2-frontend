@@ -23,13 +23,13 @@
 
 <style scoped>
   .steps {
-    padding: 0 10px;
+    padding: 0 2vw;
   }
   .step {
     display: flex;
     flex-direction: column;
-    padding: 10px 0;
-    font-size: 13px;
+    padding: 1vh 0;
+    font-size: 1.8vh;
   }
   .name {
 

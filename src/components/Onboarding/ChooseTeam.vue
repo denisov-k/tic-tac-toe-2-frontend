@@ -40,9 +40,8 @@
   }
   .caption {
     color: #fff;
-    font-weight: 600;
-    font-size: 16px;
-    margin: 0 15px;
+    font-size: 24px;
+    margin: 15px;
     white-space-collapse: preserve-breaks;
     display: flex;
     justify-content: center;
@@ -54,11 +53,10 @@
   }
   .button {
     flex: auto;
-    height: 100px;
+    height: 150px;
     border-radius: 10px;
     align-content: center;
     cursor: pointer;
-    font-weight: 600;
     font-size: 16px;
     margin: 10px;
   }

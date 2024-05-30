@@ -4,7 +4,13 @@
     <div class="refs-list">
       <div class="ref-item" v-for="ref in refs" :key="ref.id">
         <inline-svg :src="require('@/assets/images/frens/fren.svg')" class="icon" />
-        <span>{{ ref.first_name }}</span>
+        <div class="name">
+          <span>{{ ref.first_name }}</span>
+          <span>{{ ref.refs }}</span>
+        </div>
+        <div class="balance">
+          <span>{{ ref.balance.toFixed(2) }} XO</span>
+        </div>
       </div>
     </div>
   </div>
@@ -41,27 +47,38 @@
 <style scoped>
   #my-frens-list {
     width: calc(100% - 30px);
-    margin: 0 auto;
+    margin: 2.7vh auto;
   }
   .caption {
-    font-size: 18px;
-    padding: 12px 0 4px;
+    font-size: 1.9vh;
+    display: flex;
+    margin: 2vh 4vw;
   }
   .refs-list {
     margin: auto;
   }
   .ref-item {
     background-color: #00000099;
-    margin: 5px 0;
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 40px;
+    height: 6.5vh;
+    margin: 1.5vh 0;
+    padding: 0 5vw;
+    font-size: 1.5vh;
   }
   .ref-item .icon {
-    width: 16px;
-    height: 16px;
-    padding-right: 5px;
+    width: auto;
+    height: 2.6vh;
+    padding-right: 4.2vw;
+  }
+  .ref-item .balance {
+    margin-right: 0;
+    margin-left: auto;
+  }
+  .ref-item .name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 </style>
 

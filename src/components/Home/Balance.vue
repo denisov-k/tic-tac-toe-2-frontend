@@ -1,7 +1,7 @@
 <template>
   <div id="balance">
     <inline-svg :src="require('@/assets/images/home/coin.svg')" class="icon"></inline-svg>
-    {{ value }}
+    <span>{{ value }}</span>
   </div>
 </template>
 
@@ -15,7 +15,7 @@
     },
     computed: {
       value() {
-        return this.$store.state.session.user.balance;
+        return Number(this.$store.state.session.user.balance).toFixed(2);
       }
     }
   }
@@ -25,11 +25,11 @@
   #balance {
     display: flex;
     align-items: center;
-    font-size: 20px;
-    padding: 10px;
+    font-size: 3.1vh;
+    margin: 2.7vh 0;
   }
   .icon {
-    width: 36px;
-    height: 36px;
+    width: auto;
+    height: 7vh;
   }
 </style>

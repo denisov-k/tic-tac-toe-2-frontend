@@ -73,7 +73,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 1.5vh 2vw;
     flex: auto;
     justify-content: space-between;
     align-items: center;

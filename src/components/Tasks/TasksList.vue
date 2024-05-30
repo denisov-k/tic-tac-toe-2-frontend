@@ -69,47 +69,49 @@
 
 <style scoped>
   .tasks-list {
-    margin: 10px auto;
+    margin: 1vh auto;
     width: calc(100% - 30px);
   }
   .task-item {
-    padding: 10px;
+    padding: 1.5vh 3vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     background-color: #00000099;
-    margin: 10px 0;
-    font-size: 14px;
+    margin: 1.5vh 0;
+    font-size: 1.5vh;
   }
   .task-item > svg {
+    width: auto;
+    height: 3.2vh;
     align-self: center;
   }
   .captions {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin: 0 10px;
+    margin: 0 3.5vw;
   }
   .captions > div {
     display: flex;
     align-items: center;
-    padding: 2px 0;
+    padding: 0.3vh 0;
   }
   .coin-icon {
-    width: 18px;
-    height: 18px;
-    margin-right: 5px;
+    width: auto;
+    height: 1.6vh;
+    margin-right: 1.3vw;
   }
   .completed-icon {
-    width: 28px;
-    height: 28px;
+    width: auto;
+    height: 3vh;
   }
   .button {
     align-content: center;
-    width: 60px;
+    width: 18.5vw;
     margin-right: 0;
     margin-left: auto;
-    height: 30px;
+    height: 3.75vh;
     align-self: center;
     display: flex;
     justify-content: center;

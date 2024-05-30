@@ -29,7 +29,7 @@ const Session = {
       return service.getCurrent().then(async (user) => {
         context.commit(Mutations.SET_USER, user);
       }).catch(() => {
-        context.commit(Mutations.SET_USER, { first_name: 'test' });
+        context.commit(Mutations.SET_USER, { first_name: 'test', team: 'red', balance: 0 });
       })
     },
     [Actions.SET_TEAM](context, team) {

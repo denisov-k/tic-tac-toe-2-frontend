@@ -61,7 +61,10 @@ export default {
 <style scoped>
   .layouts--footer {
     width: 100%;
+    height: 9.7vh;
     background-color: #1212128a;
+    border-radius: 13px;
+    align-content: center;
   }
   .footer-content {
     display: flex;
@@ -71,20 +74,20 @@ export default {
   .navigation-button {
     display: flex;
     flex-direction: column;
-    padding: 15px;
     /*font-weight: 600;*/
     cursor: pointer;
     color: #898989;
     align-items: center;
+    font-size: 1.35vh;
   }
   .navigation-button.selected {
     color: white;
   }
   .navigation-button .image {
     stroke: #898989;
-    width: 20px;
-    height: 20px;
-    margin-bottom: 5px;
+    width: auto;
+    height: 2.5vh;
+    margin-bottom: 0.7vh;
   }
   .navigation-button.selected .image{
     stroke: white;

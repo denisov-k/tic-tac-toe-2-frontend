@@ -1,8 +1,10 @@
 <template>
   <main>
     <inline-svg :src="require('@/assets/images/tasks/icon.svg')" class="icon"></inline-svg>
-    <span class="header">{{availableTasksCount}} {{$t('header') }}</span>
-    <span class="description">{{ $t('description') }}</span>
+    <div class="header">
+      <span>{{availableTasksCount}} {{$t('header') }}</span>
+      <span class="description">{{ $t('description') }}</span>
+    </div>
     <tasks-list :tasks="tasks" v-if="tasks.length"></tasks-list>
     <slot name="footer"></slot>
   </main>
@@ -42,7 +44,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 1.5vh 2vw;
     flex: auto;
     justify-content: space-between;
     background: linear-gradient(210deg,#151515,#7e1363, #007777,#020202,#0d8e8e);
@@ -62,19 +64,21 @@
     }
   }
   .icon {
-    width: 80px;
-    height: 80px;
+    height: 14.5vh;
+    margin: 2.7vh 0;
     align-self: center;
   }
   .header {
-    font-size: 24px;
-    padding: 10px;
-    font-weight: 600;
+    font-size: 2.4vh;
+    margin: 2.7vh 0;
+    display: flex;
+    flex-direction: column;
   }
   .description {
-    font-size: 14px;
+    font-size: 1.6vh;
     color: white;
-    padding: 0 50px;
+    padding: 0 10vw;
+    margin-top: 1.5vh;
   }
 </style>
 

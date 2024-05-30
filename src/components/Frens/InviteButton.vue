@@ -1,5 +1,7 @@
 <template>
-  <div id="invite-button" v-on:click="onClick">{{ $t('invite') }}</div>
+  <div id="invite-button" v-on:click="onClick">
+    <span>{{ $t('invite') }}</span>
+  </div>
 </template>
 
 <script>
@@ -17,15 +19,15 @@
     background-color: #04B75C;
     box-sizing: border-box;
     color: white;
-    font-size: 16px;
-    height: 50px;
     align-content: center;
-    margin: 10px auto;
+    margin: 2.7vh auto;
     cursor: pointer;
     border: 3px solid;
     border-image-slice: 1;
     border-image-source: linear-gradient(to left, #ffffff, #04B75C);
     box-shadow: 0 0 10px 3px #04B75C;
+    height: 7vh;
+    font-size: 1.9vh;
   }
 </style>
 

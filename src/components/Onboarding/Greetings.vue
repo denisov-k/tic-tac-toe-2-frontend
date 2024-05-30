@@ -23,7 +23,7 @@
     padding: 20px;
   }
   .caption {
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 600;
   }
 </style>

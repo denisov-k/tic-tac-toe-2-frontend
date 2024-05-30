@@ -19,21 +19,22 @@
    aspect-ratio: 1;
    align-items: center;
    box-sizing: border-box;
+   margin: 2.7vh 0;
  }
  .game-icon {
    fill: #535559;
-   margin: 5px 0;
-   width: 100px;
-   height: 100px;
+   margin: 0 0 1vh 0;
+   width: auto;
+   height: 15vh;
  }
  span {
    color: #989999;
  }
  .caption-1 {
-   font-size: 13px;
+   font-size: 1.5vh;
  }
  .caption-2 {
-    font-size: 13px;
+    font-size: 1.5vh;
  }
 </style>
 

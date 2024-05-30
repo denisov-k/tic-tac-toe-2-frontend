@@ -1,12 +1,10 @@
 <template>
   <div id="blow-up" :class="userTeam === 'red' ? 'red': 'blue'">
-    <div class="buttons">
-      <div class="button enabled" v-on:click="blowUp" v-if="enabled">
-        {{ $t('blow_up') }}
-      </div>
-      <div class="button" v-else>
-        {{ timerFormatted }}
-      </div>
+    <div class="button enabled" v-on:click="blowUp" v-if="enabled">
+      <span>{{ $t('blow_up') }}</span>
+    </div>
+    <div class="button" v-else>
+      {{ timerFormatted }}
     </div>
   </div>
 </template>
@@ -84,13 +82,12 @@
 <style scoped>
   #blow-up {
     width: calc(100% - 30px);
-    /*margin-bottom: 10px;*/
+    margin: 2.7vh 0;
   }
   .button {
-    height: 50px;
+    height: 7vh;
     align-content: center;
-    font-size: 16px;
-    margin: 10px 0;
+    font-size: 1.9vh;
     background-color: #151515;
     color: white;
   }

@@ -31,16 +31,30 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 20px 15px;
+    padding: 1.5vh 2vw;
     flex: auto;
     justify-content: center;
     overflow-y: auto;
     box-sizing: border-box;
     width: 100%;
+    background: linear-gradient(240deg, #186219, #21306b, #1a131b, #000000);
+    background-size: 150% 140%;
+    animation: gradient-animation-65563b56 15s ease infinite;
+  }
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
   svg.icon {
-    height: 360px;
-    width: 360px;
+    height: 14.5vh;
+    width: auto;
     align-self: center;
   }
 </style>

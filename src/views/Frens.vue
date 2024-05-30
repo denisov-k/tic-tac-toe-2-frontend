@@ -1,8 +1,10 @@
 <template>
   <main>
     <inline-svg :src="require('@/assets/images/frens/frens-header.svg')" class="icon" />
-    <span class="header">{{ $t('header') }}</span>
-    <steps></steps>
+    <div class="header">
+      <span>{{ $t('header') }}</span>
+      <steps></steps>
+    </div>
     <my-frens-list></my-frens-list>
     <invite-button :onClick="showInvitePopup"></invite-button>
     <invite-frame ref="invite-popup"></invite-frame>
@@ -44,7 +46,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 10px;
+    padding: 1.5vh 2vw;
     flex: auto;
     justify-content: space-between;
     overflow-y: auto;
@@ -52,7 +54,7 @@
     width: 100%;
     background: linear-gradient(210deg,#151515, #225e23, #007777,#020202,#0d8e8e);
     background-size: 200% 200%;
-    animation: gradient-animation 40s ease infinite;
+    animation: gradient-animation 30s ease infinite;
   }
   @keyframes gradient-animation {
     0% {
@@ -66,13 +68,13 @@
     }
   }
   .header {
-    font-size: 26px;
-    font-weight: 600;
-    padding: 10px 10px 0;
+    font-size: 2.5vh;
+    margin: 2.7vh 0;
   }
   .icon {
-    width: 80px;
-    height: 80px;
+    width: auto;
+    height: 14.5vh;
+    margin: 2.7vh 0;
     align-self: center;
   }
 

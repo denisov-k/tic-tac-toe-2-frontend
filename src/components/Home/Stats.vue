@@ -16,12 +16,14 @@
     },
     computed: {
       firstTeam() {
-        let team = this.stats.find(item => item.team === 'blue')
-        return team ? team.total_balance : 0
+        let team = this.stats.find(item => item.team === 'blue');
+        const value = team ? team.total_balance : 0;
+        return Number(value).toFixed(2);
       },
       secondTeam() {
         let team = this.stats.find(item => item.team === 'red')
-        return team ? team.total_balance : 0
+        const value =  team ? team.total_balance : 0
+        return Number(value).toFixed(2);
       }
     }
   }
@@ -29,8 +31,8 @@
 
 <style scoped>
   #stats {
-    font-size: 20px;
-    padding: 10px;
+    font-size: 2.3vh;
+    margin: 2.7vh 0;
     display: flex;
     align-items: center;
   }
@@ -41,7 +43,7 @@
     color: #FF0A47;
   }
   svg.icon {
-    width: 36px;
-    height: 36px;
+    width: auto;
+    height: 3.75vh;
   }
 </style>
