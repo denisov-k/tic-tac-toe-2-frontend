@@ -1,13 +1,15 @@
 <template>
-  <main>
-    <inline-svg :src="require('@/assets/images/tasks/icon.svg')" class="icon"></inline-svg>
-    <div class="header">
-      <span>{{availableTasksCount}} {{$t('header') }}</span>
-      <span class="description">{{ $t('description') }}</span>
-    </div>
-    <tasks-list :tasks="tasks" v-if="tasks.length"></tasks-list>
+  <div>
+    <main>
+      <inline-svg :src="require('@/assets/images/tasks/icon.svg')" class="icon"></inline-svg>
+      <div class="header">
+        <span>{{availableTasksCount}} {{$t('header') }}</span>
+        <span class="description">{{ $t('description') }}</span>
+      </div>
+      <tasks-list :tasks="tasks" v-if="tasks.length"></tasks-list>
+    </main>
     <slot name="footer"></slot>
-  </main>
+  </div>
 </template>
 
 <script>
@@ -39,17 +41,26 @@
 </script>
 
 <style scoped>
-  main {
-    position: relative;
-    height: 100%;
+  .content {
     display: flex;
     flex-direction: column;
-    padding: 1.5vh 2vw;
-    flex: auto;
-    justify-content: space-between;
+    height: 100%;
     background: linear-gradient(210deg,#151515,#7e1363, #007777,#020202,#0d8e8e);
     background-size: 200% 200%;
     animation: gradient-animation 40s ease infinite;
+    justify-content: space-between;
+    padding: 1.5vh 2vw;
+    box-sizing: border-box;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    justify-content: space-between;
+    overflow-y: auto;
+    box-sizing: border-box;
+    width: 100%;
+    align-items: center;
   }
 
   @keyframes gradient-animation {

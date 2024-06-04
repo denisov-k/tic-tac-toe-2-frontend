@@ -86,7 +86,9 @@
   }
   .button {
     height: 7vh;
-    align-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.9vh;
     background-color: #151515;
     color: white;

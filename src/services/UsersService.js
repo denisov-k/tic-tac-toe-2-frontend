@@ -49,4 +49,9 @@ export default class UsersService extends Service {
     return this.transport.request(`game/tasks`, { taskId }, (res) => res.data,
       'post', {withCredentials: true })
   }
+
+  claimBalance() {
+    return this.transport.request(`game/claim`, {}, (res) => res.data,
+      'post', {withCredentials: true })
+  }
 }

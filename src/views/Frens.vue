@@ -1,15 +1,18 @@
 <template>
-  <main>
-    <inline-svg :src="require('@/assets/images/frens/frens-header.svg')" class="icon" />
-    <div class="header">
-      <span>{{ $t('header') }}</span>
-      <steps></steps>
-    </div>
-    <my-frens-list></my-frens-list>
-    <invite-button :onClick="showInvitePopup"></invite-button>
-    <invite-frame ref="invite-popup"></invite-frame>
+  <div>
+    <main>
+      <inline-svg :src="require('@/assets/images/frens/frens-header.svg')" class="icon" />
+      <div class="header">
+        <span>{{ $t('header') }}</span>
+        <steps></steps>
+      </div>
+      <claim></claim>
+      <my-frens-list></my-frens-list>
+      <invite-button :onClick="showInvitePopup"></invite-button>
+      <invite-frame ref="invite-popup"></invite-frame>
+    </main>
     <slot name="footer"></slot>
-  </main>
+  </div>
 </template>
 
 <script>
@@ -18,10 +21,11 @@
   import InviteButton from "@/components/Frens/InviteButton";
   import InviteFrame from "@/components/Frens/InviteFrame";
   import MyFrensList from "@/components/Frens/MyFrensList.vue";
+  import Claim from "@/components/Frens/Claim.vue";
 
   export default {
     name: "Frens",
-    components: {MyFrensList, InviteButton, InviteFrame, Steps},
+    components: {Claim, MyFrensList, InviteButton, InviteFrame, Steps},
     data() {
       return {
         // isPopupShowing: false
@@ -42,19 +46,25 @@
 </script>
 
 <style scoped>
-  main {
-    height: 100%;
+  .content {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    background: linear-gradient(210deg,#151515, #225e23, #007777,#020202,#0d8e8e);
+    background-size: 200% 200%;
+    animation: gradient-animation 30s ease infinite;
     padding: 1.5vh 2vw;
+    box-sizing: border-box;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
     flex: auto;
     justify-content: space-between;
     overflow-y: auto;
     box-sizing: border-box;
     width: 100%;
-    background: linear-gradient(210deg,#151515, #225e23, #007777,#020202,#0d8e8e);
-    background-size: 200% 200%;
-    animation: gradient-animation 30s ease infinite;
+    align-items: center;
   }
   @keyframes gradient-animation {
     0% {

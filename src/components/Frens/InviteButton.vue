@@ -15,11 +15,12 @@
 
 <style scoped>
   #invite-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: calc(100% - 30px);
     background-color: #04B75C;
-    box-sizing: border-box;
     color: white;
-    align-content: center;
     margin: 2.7vh auto;
     cursor: pointer;
     border: 3px solid;

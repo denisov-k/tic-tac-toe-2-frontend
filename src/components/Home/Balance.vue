@@ -1,7 +1,7 @@
 <template>
   <div id="balance">
     <inline-svg :src="require('@/assets/images/home/coin.svg')" class="icon"></inline-svg>
-    <span>{{ value }}</span>
+    <span class="value">{{ value }}</span>
   </div>
 </template>
 
@@ -31,5 +31,8 @@
   .icon {
     width: auto;
     height: 7vh;
+  }
+  .value {
+    padding-right: 2vw;
   }
 </style>

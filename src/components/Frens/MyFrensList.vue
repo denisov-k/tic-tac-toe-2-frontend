@@ -46,13 +46,14 @@
 
 <style scoped>
   #my-frens-list {
-    width: calc(100% - 30px);
+    width: 100%;
     margin: 2.7vh auto;
   }
   .caption {
     font-size: 1.9vh;
+    margin: 2vh auto;
+    width: calc(100% - 30px);
     display: flex;
-    margin: 2vh 4vw;
   }
   .refs-list {
     margin: auto;

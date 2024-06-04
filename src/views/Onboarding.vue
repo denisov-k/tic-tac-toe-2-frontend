@@ -53,7 +53,6 @@
     }
   }
   svg.icon {
-    height: 14.5vh;
     width: auto;
     align-self: center;
   }

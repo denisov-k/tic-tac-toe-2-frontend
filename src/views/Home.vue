@@ -1,14 +1,16 @@
 <template>
-  <main :class="userTeam === 'red' ? 'red': 'blue'">
-    <user-info></user-info>
-    <balance></balance>
+  <div :class="userTeam === 'red' ? 'red': 'blue'">
+    <main>
+      <user-info></user-info>
+      <balance></balance>
 
-    <teaser></teaser>
-    <stats :stats="stats" v-if="stats"></stats>
-    <blow-up :after-click="showAnimation"></blow-up>
-    <blow-up-animation ref="animation"></blow-up-animation>
+      <teaser></teaser>
+      <stats :stats="stats" v-if="stats"></stats>
+      <blow-up :after-click="showAnimation"></blow-up>
+      <blow-up-animation ref="animation"></blow-up-animation>
+    </main>
     <slot name="footer"></slot>
-  </main>
+  </div>
 </template>
 
 <script>
@@ -69,16 +71,25 @@
 </script>
 
 <style scoped>
-  main {
-    height: 100%;
+  .content {
     display: flex;
     flex-direction: column;
-    padding: 1.5vh 2vw;
-    flex: auto;
-    justify-content: space-between;
-    align-items: center;
+    height: 100%;
     background-size: 200% 200%;
     animation: gradient-animation 40s ease infinite;
+    justify-content: space-between;
+    padding: 1.5vh 2vw;
+    box-sizing: border-box;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    justify-content: space-between;
+    overflow-y: auto;
+    box-sizing: border-box;
+    width: 100%;
+    align-items: center;
   }
   @keyframes gradient-animation {
     0% {
@@ -97,11 +108,11 @@
     align-items: center;
     width: 100%;
   }
-  main.red {
+  .red {
 
     background: linear-gradient(210deg, #660029, #403909, #121316, #6e0a32);
   }
-  main.blue {
+  .blue {
 
     background: linear-gradient(210deg,  #134d7e, #403909, #121316, #0d448e);
   }

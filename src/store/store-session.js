@@ -15,8 +15,9 @@ const Session = {
     [Mutations.SET_TEAM](state, team) {
       state.user.team = team;
     },
-    [Mutations.SET_BALANCE](state, balance) {
+    [Mutations.SET_BALANCE](state, { balance, unclaimed_balance }) {
       state.user.balance = balance;
+      state.user.unclaimedBalance = unclaimed_balance;
     },
     [Mutations.UPDATE_STATE](state) {
       state.lastUpdate = (new Date()).toDateString();

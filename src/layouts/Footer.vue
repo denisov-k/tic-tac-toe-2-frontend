@@ -61,15 +61,20 @@ export default {
 <style scoped>
   .layouts--footer {
     width: 100%;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .footer-content {
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
     height: 9.7vh;
     background-color: #1212128a;
     border-radius: 13px;
-    align-content: center;
-  }
-  .footer-content {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    align-items: center;
   }
   .navigation-button {
     display: flex;

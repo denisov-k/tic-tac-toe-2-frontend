@@ -16,7 +16,6 @@
  #teaser {
    display: flex;
    flex-direction: column;
-   aspect-ratio: 1;
    align-items: center;
    box-sizing: border-box;
    margin: 2.7vh 0;

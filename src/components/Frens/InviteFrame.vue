@@ -68,7 +68,9 @@
     margin: 10px 10px;
     cursor: pointer;
     height: 35px;
-    align-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     box-shadow: 0 0 10px 1px #04B75C;
   }
 
