@@ -9,7 +9,7 @@
           <span>{{ ref.refs }}</span>
         </div>
         <div class="balance">
-          <span>{{ ref.balance.toFixed(2) }} XO</span>
+          <span>{{ ref.balance }} XO</span>
         </div>
       </div>
     </div>
@@ -57,6 +57,8 @@
   }
   .refs-list {
     margin: auto;
+    overflow-y: auto;
+    height: 13vh;
   }
   .ref-item {
     background-color: #00000099;

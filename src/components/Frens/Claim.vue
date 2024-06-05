@@ -27,7 +27,9 @@
       async claim() {
         this.service = new Service();
 
-        await this.service.claimBalance();
+        await this.service.claimBalance().then(() => {
+          this.$store.dispatch('updateBalance');
+        })
       }
     }
   }
@@ -55,7 +57,6 @@
   }
   .value {
     font-size: 3.1vh;
-    margin: 2.7vh 0;
     padding-left: 1vw;
   }
   .button {

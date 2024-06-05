@@ -17,7 +17,7 @@ const Session = {
     },
     [Mutations.SET_BALANCE](state, { balance, unclaimed_balance }) {
       state.user.balance = balance;
-      state.user.unclaimedBalance = unclaimed_balance;
+      state.user.unclaimed_balance = unclaimed_balance;
     },
     [Mutations.UPDATE_STATE](state) {
       state.lastUpdate = (new Date()).toDateString();
@@ -41,6 +41,15 @@ const Session = {
           context.commit(Mutations.SET_USER, user);
         })
       })
+    },
+    [Actions.UPDATE_BALANCE](context) {
+      let service = new UsersService();
+
+      service.transport.request(`game/balance`, null,
+        (res) => {
+          context.commit('setBalance', res.data.user);
+        },
+        'get', {withCredentials: true })
     },
     [Actions.LOGOUT](context, baseURL) {
       //window.location.href = Config.data.api.http.logoutURL

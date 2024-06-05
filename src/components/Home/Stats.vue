@@ -31,7 +31,7 @@
 
 <style scoped>
   #stats {
-    font-size: 2.3vh;
+    font-size: 2.4vh;
     margin: 2.7vh 0;
     display: flex;
     align-items: center;
