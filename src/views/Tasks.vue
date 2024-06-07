@@ -1,12 +1,13 @@
 <template>
   <div>
     <main>
+      <alert ref="alert"></alert>
       <inline-svg :src="require('@/assets/images/tasks/icon.svg')" class="icon"></inline-svg>
       <div class="header">
         <span>{{availableTasksCount}} {{$t('header') }}</span>
         <span class="description">{{ $t('description') }}</span>
       </div>
-      <tasks-list :tasks="tasks" v-if="tasks.length"></tasks-list>
+      <tasks-list :tasks="tasks" :after-complete="afterComplete" v-if="tasks.length"></tasks-list>
     </main>
     <slot name="footer"></slot>
   </div>
@@ -16,10 +17,11 @@
 
   import TasksList from "@/components/Tasks/TasksList.vue";
   import Service from "@/services/UsersService";
+  import Alert from "@/components/Tasks/Alert.vue";
 
   export default {
     name: "Tasks",
-    components: {TasksList},
+    components: {Alert, TasksList},
     data() {
       return {
         tasks: []
@@ -35,8 +37,14 @@
     computed: {
       availableTasksCount() {
         return this.tasks.filter(task => !task.completed).length
-      }
+      },
+
     },
+    methods: {
+      afterComplete(task) {
+        this.$refs.alert.show(this.$t('alert', { award: task.reward }));
+      }
+    }
   }
 </script>
 
@@ -45,7 +53,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    background: linear-gradient(210deg,#151515,#7e1363, #007777,#020202,#0d8e8e);
+    background-image: linear-gradient(210deg, #151515, #430534, #013d3d, #000000);
     background-size: 200% 200%;
     animation: gradient-animation 40s ease infinite;
     justify-content: space-between;
@@ -56,7 +64,6 @@
     display: flex;
     flex-direction: column;
     flex: auto;
-    justify-content: space-between;
     overflow-y: auto;
     box-sizing: border-box;
     width: 100%;
@@ -97,11 +104,13 @@
   {
     "en": {
       "header": "tasks available",
-      "description": "We’ll reward you immediately with points after each task completion"
+      "description": "We’ll reward you immediately with points after each task completion",
+      "alert": "You got + {award} XO Points!"
     },
     "ru": {
       "header": "tasks available",
-      "description": "We’ll reward you immediately with points after each task completion"
+      "description": "We’ll reward you immediately with points after each task completion",
+      "alert": "You got + {award} XO Points!"
     }
   }
 </i18n>

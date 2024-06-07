@@ -1,6 +1,6 @@
 <template>
-  <div id="blow-up-animation" v-if="isShowing">
-    <lottie-animation :path="animationPath" :loop="false" @AnimControl="setAnimController"></lottie-animation>
+  <div id="claim-animation" v-if="isShowing">
+    <lottie-animation path="./claim_animation.json" :loop="false" @AnimControl="setAnimController"></lottie-animation>
   </div>
 </template>
 
@@ -13,9 +13,7 @@
       LottieAnimation
     },
     computed: {
-      animationPath() {
-        return this.$store.state.session.user.team === 'red' ? './home_red_arrow.json' : './home_blue_arrow.json';
-      }
+
     },
     data() {
       return {
@@ -36,7 +34,7 @@
 </script>
 
 <style scoped>
-  #blow-up-animation {
+  #claim-animation {
     position: absolute;
     left: 0;
     right: 0;

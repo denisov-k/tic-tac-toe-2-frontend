@@ -14,7 +14,7 @@
       <div class="button completed" v-if="task.completed">
         <inline-svg :src="require('@/assets/images/tasks/completed.svg')" class="completed-icon"></inline-svg>
       </div>
-      <div class="button start" v-on:click="completeTask(index)" v-else-if="taskInProgressIndex !== index">
+      <div class="button start" v-on:click="startTask(index)" v-else-if="taskInProgressIndex !== index">
         {{ $t('start') }}
       </div>
       <div class="button claim" v-on:click="claimTask(index)" v-else>
@@ -31,7 +31,8 @@
   export default {
     name: "TasksList",
     props: {
-      tasks: Array
+      tasks: Array,
+      afterComplete: Function
     },
     data() {
       return {
@@ -49,7 +50,7 @@
       this.tasksList = this.tasks;
     },
     methods: {
-      completeTask(index) {
+      startTask(index) {
         setTimeout(() => this.taskInProgressIndex = index, 1000);
 
         Telegram.WebApp.openLink(this.tasks[index].link);
@@ -58,10 +59,8 @@
         this.service.claimTask(this.tasksList[index].id).then(() => {
           this.tasksList[index].completed = true;
           this.taskInProgressIndex = -1;
+          this.afterComplete(this.tasksList[index]);
         })
-      },
-      getIcon(type) {
-        console.log(type)
       }
     }
   }

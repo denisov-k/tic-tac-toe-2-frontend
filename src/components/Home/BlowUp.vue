@@ -1,10 +1,11 @@
 <template>
   <div id="blow-up" :class="userTeam === 'red' ? 'red': 'blue'">
     <div class="button enabled" v-on:click="blowUp" v-if="enabled">
-      <span>{{ $t('blow_up') }}</span>
+      <span>{{ $t('blow_up') }} +{{ value }}</span>
     </div>
     <div class="button" v-else>
-      {{ timerFormatted }}
+      <span class="recovery">{{ $t('recovery') }} +{{ valueFormatted }}</span>
+      <span class="timer">{{ timerFormatted }}</span>
     </div>
   </div>
 </template>
@@ -22,13 +23,18 @@
         enabled: true,
         timer: 0,
         timerFormatted: '',
+        value: 0,
+        valueFormatted: '',
         inAction: false
       }
     },
     mounted() {
       this.resetTimer();
+      this.resetValue();
       this.reduceTimer();
+      this.increaseValue();
       setInterval(this.reduceTimer, 1000);
+      setInterval(this.increaseValue, 1000);
     },
     methods: {
       async blowUp() {
@@ -36,14 +42,15 @@
           return;
 
         this.inAction = true;
-        this.service = new Service();
-
         this.afterClick();
+
+        this.service = new Service();
 
         await this.service.blowUp();
         await this.$store.dispatch('auth');
 
         this.resetTimer();
+        this.resetValue();
         this.inAction = false;
       },
       convertSecondsToTime(input) {
@@ -52,9 +59,9 @@
         const minutes = dateObj.getUTCMinutes();
         const seconds = dateObj.getSeconds();
 
-        return hours.toString().padStart(2, '0')
-            + ':' + minutes.toString().padStart(2, '0')
-            + ':' + seconds.toString().padStart(2, '0');
+        return `${hours.toString().padStart(2, '0')}h
+            ${minutes.toString().padStart(2, '0')}m`;
+            //+ ':' + seconds.toString().padStart(2, '0');
       },
       reduceTimer(){
         if (this.timer > 0) {
@@ -69,6 +76,15 @@
           this.timer = (6 * 60 * 60 * 1000 - (Date.now() - new Date(lastBlowUp))) / 1000;
         else
           this.timer = 0;
+      },
+      resetValue() {
+        this.value = this.$store.state.session.user.last_blow_up ? ((6 * 60 * 60 - this.timer) / (6 * 60) / 100) * 5 : 100;
+      },
+      increaseValue() {
+        if (this.value < 5) {
+          this.value = ((6 * 60 * 60 - this.timer) / (6 * 60) / 100) * 5;
+          this.valueFormatted = (this.value).toFixed(3);
+        }
       }
     },
     computed: {
@@ -81,8 +97,9 @@
 
 <style scoped>
   #blow-up {
-    width: calc(100% - 30px);
+    width: calc(100% - 24px);
     margin: 2.7vh 0;
+    position: relative;
   }
   .button {
     height: 7vh;
@@ -108,16 +125,26 @@
     border-image-source: linear-gradient(to left, #ffffff, #3BADFF);
     box-shadow: 0 0 10px 3px #3BADFF;
   }
-
+  .recovery {
+    color: #828282;
+  }
+  .timer {
+    position: absolute;
+    right: 5vw;
+    color: #565656;
+    font-size: 1.5vh;
+  }
 </style>
 
 <i18n>
   {
     "en": {
-      "blow_up": "Blow up +5.000"
+      "blow_up": "Blow up",
+      "recovery": "Recovery"
     },
     "ru": {
-      "blow_up": "Blow up +5.000"
+      "blow_up": "Blow up",
+      "recovery": "Recovery"
     }
   }
 </i18n>

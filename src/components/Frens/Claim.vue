@@ -18,6 +18,9 @@
 
   export default {
     name: "Claim",
+    props: {
+      afterClick: Function
+    },
     computed: {
       balance() {
         return Number(this.$store.state.session.user.unclaimed_balance).toFixed(2);
@@ -25,6 +28,7 @@
     },
     methods: {
       async claim() {
+        this.afterClick();
         this.service = new Service();
 
         await this.service.claimBalance().then(() => {

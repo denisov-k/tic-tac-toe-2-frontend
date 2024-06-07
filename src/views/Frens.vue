@@ -6,7 +6,8 @@
         <span>{{ $t('header') }}</span>
         <steps></steps>
       </div>
-      <claim></claim>
+      <claim :after-click="showAnimation"></claim>
+      <claim-animation ref="animation"></claim-animation>
       <my-frens-list></my-frens-list>
       <invite-button :onClick="showInvitePopup"></invite-button>
       <invite-frame ref="invite-popup"></invite-frame>
@@ -22,10 +23,12 @@
   import InviteFrame from "@/components/Frens/InviteFrame";
   import MyFrensList from "@/components/Frens/MyFrensList.vue";
   import Claim from "@/components/Frens/Claim.vue";
+  import ClaimAnimation from "@/components/Frens/ClaimAnimation.vue";
+  import BlowUp from "@/components/Home/BlowUp.vue";
 
   export default {
     name: "Frens",
-    components: {Claim, MyFrensList, InviteButton, InviteFrame, Steps},
+    components: {BlowUp, Claim, ClaimAnimation, MyFrensList, InviteButton, InviteFrame, Steps},
     data() {
       return {
         // isPopupShowing: false
@@ -40,6 +43,9 @@
       },
       showMyFrensPopup() {
         this.$refs['my-frens-popup'].show();
+      },
+      showAnimation() {
+        this.$refs['animation'].isShowing = true;
       }
     }
   }
@@ -50,7 +56,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    background: linear-gradient(210deg,#151515, #225e23, #007777,#020202,#0d8e8e);
+    background-image: linear-gradient(210deg, #61722e, #225e23, #08192f, #0d8e8e);
     background-size: 200% 200%;
     animation: gradient-animation 30s ease infinite;
     padding: 1.5vh 2vw;
