@@ -1,16 +1,15 @@
 <template>
   <div id="claim-animation" v-if="isShowing">
-    <lottie-animation path="./claim_animation.json" :loop="false" @AnimControl="setAnimController"></lottie-animation>
+    <lottie :animation-data="require('@/assets/images/frens/claim_animation.json')" :loop="false" @AnimControl="setAnimController"></lottie>
   </div>
 </template>
 
 <script>
-  import LottieAnimation from "lottie-vuejs/src/LottieAnimation";
 
   export default {
     name: "InviteFrame",
     components: {
-      LottieAnimation
+
     },
     computed: {
 
@@ -35,11 +34,11 @@
 
 <style scoped>
   #claim-animation {
+    display: flex;
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    align-content: flex-end;
   }
 </style>

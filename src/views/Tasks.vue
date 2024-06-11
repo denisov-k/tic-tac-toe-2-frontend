@@ -1,16 +1,13 @@
 <template>
-  <div>
-    <main>
-      <alert ref="alert"></alert>
-      <inline-svg :src="require('@/assets/images/tasks/icon.svg')" class="icon"></inline-svg>
-      <div class="header">
-        <span>{{availableTasksCount}} {{$t('header') }}</span>
-        <span class="description">{{ $t('description') }}</span>
-      </div>
-      <tasks-list :tasks="tasks" :after-complete="afterComplete" v-if="tasks.length"></tasks-list>
-    </main>
-    <slot name="footer"></slot>
-  </div>
+  <main>
+    <alert ref="alert"></alert>
+    <inline-svg :src="require('@/assets/images/tasks/icon.svg')" class="icon"></inline-svg>
+    <div class="header">
+      <span>{{availableTasksCount}} {{$t('header') }}</span>
+      <span class="description">{{ $t('description') }}</span>
+    </div>
+    <tasks-list :tasks="tasks" :after-complete="afterComplete" v-if="tasks.length"></tasks-list>
+  </main>
 </template>
 
 <script>
@@ -49,17 +46,6 @@
 </script>
 
 <style scoped>
-  .content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background-image: linear-gradient(210deg, #151515, #430534, #013d3d, #000000);
-    background-size: 200% 200%;
-    animation: gradient-animation 40s ease infinite;
-    justify-content: space-between;
-    padding: 1.5vh 2vw;
-    box-sizing: border-box;
-  }
   main {
     display: flex;
     flex-direction: column;
@@ -68,6 +54,11 @@
     box-sizing: border-box;
     width: 100%;
     align-items: center;
+    height: 100%;
+    background-image: linear-gradient(210deg, #151515, #430534, #013d3d, #000000);
+    background-size: 200% 200%;
+    animation: gradient-animation 40s ease infinite;
+    padding: 1.5vh 2vw 12.5vh;
   }
 
   @keyframes gradient-animation {
@@ -83,7 +74,7 @@
   }
   .icon {
     height: 14.5vh;
-    margin: 2.7vh 0;
+    margin: 1vh 0;
     align-self: center;
   }
   .header {

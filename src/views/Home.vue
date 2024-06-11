@@ -1,16 +1,13 @@
 <template>
-  <div :class="userTeam === 'red' ? 'red': 'blue'">
-    <main>
-      <user-info></user-info>
-      <balance></balance>
+  <main :class="userTeam === 'red' ? 'red': 'blue'">
+    <user-info></user-info>
+    <balance></balance>
 
-      <teaser></teaser>
-      <stats :stats="stats" v-if="stats"></stats>
-      <blow-up :after-click="showAnimation"></blow-up>
-      <blow-up-animation ref="animation" ></blow-up-animation>
-    </main>
-    <slot name="footer"></slot>
-  </div>
+    <teaser></teaser>
+    <stats :stats="stats" v-if="stats"></stats>
+    <blow-up :after-click="showAnimation"></blow-up>
+    <blow-up-animation ref="animation" ></blow-up-animation>
+  </main>
 </template>
 
 <script>
@@ -71,20 +68,10 @@
 </script>
 
 <style scoped>
-  .content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background-size: 200% 200%;
-    animation: gradient-animation 30s ease infinite;
-    justify-content: space-between;
-    padding: 1.5vh 2vw;
-    box-sizing: border-box;
-  }
-  .content.red {
+  main.red {
     background-image: linear-gradient(210deg, #660029, #403909, #121316, #6e0a32);
   }
-  .content.blue {
+  main.blue {
     background-image: linear-gradient(210deg, #051929, #134d7e, #403909, #0c1a45, #0d448e);
   }
   main {
@@ -96,6 +83,10 @@
     box-sizing: border-box;
     width: 100%;
     align-items: center;
+    height: 100%;
+    background-size: 200% 200%;
+    animation: gradient-animation 30s ease infinite;
+    padding: 1.5vh 2vw 12.5vh;
   }
   @keyframes gradient-animation {
     0% {

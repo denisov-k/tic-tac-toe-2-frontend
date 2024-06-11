@@ -9,7 +9,7 @@
           <span>{{ ref.refs }}</span>
         </div>
         <div class="balance">
-          <span>{{ ref.balance }} XO</span>
+          <span>{{ ref.balance.toFixed(3) }}</span>
         </div>
       </div>
     </div>

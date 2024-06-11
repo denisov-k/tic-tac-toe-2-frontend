@@ -1,11 +1,8 @@
 <template>
   <div id="app">
     <router-view name="header"></router-view>
-    <router-view :key="defaultViewKey" class="content">
-      <template v-slot:footer>
-        <router-view name="footer"></router-view>
-      </template>
-    </router-view>
+    <router-view :key="defaultViewKey" class="content"></router-view>
+    <router-view name="footer"></router-view>
   </div>
 </template>
 <script>

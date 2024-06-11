@@ -1,19 +1,16 @@
 <template>
-  <div>
-    <main>
-      <inline-svg :src="require('@/assets/images/frens/frens-header.svg')" class="icon" />
-      <div class="header">
-        <span>{{ $t('header') }}</span>
-        <steps></steps>
-      </div>
-      <claim :after-click="showAnimation"></claim>
-      <claim-animation ref="animation"></claim-animation>
-      <my-frens-list></my-frens-list>
-      <invite-button :onClick="showInvitePopup"></invite-button>
-      <invite-frame ref="invite-popup"></invite-frame>
-    </main>
-    <slot name="footer"></slot>
-  </div>
+  <main>
+    <inline-svg :src="require('@/assets/images/frens/frens-header.svg')" class="icon" />
+    <div class="header">
+      <span>{{ $t('header') }}</span>
+      <steps></steps>
+    </div>
+    <claim :after-click="showAnimation"></claim>
+    <claim-animation ref="animation"></claim-animation>
+    <my-frens-list></my-frens-list>
+    <invite-button :onClick="showInvitePopup"></invite-button>
+    <invite-frame ref="invite-popup"></invite-frame>
+  </main>
 </template>
 
 <script>
@@ -52,16 +49,6 @@
 </script>
 
 <style scoped>
-  .content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background-image: linear-gradient(210deg, #61722e, #225e23, #08192f, #0d8e8e);
-    background-size: 200% 200%;
-    animation: gradient-animation 30s ease infinite;
-    padding: 1.5vh 2vw;
-    box-sizing: border-box;
-  }
   main {
     display: flex;
     flex-direction: column;
@@ -71,6 +58,11 @@
     box-sizing: border-box;
     width: 100%;
     align-items: center;
+    height: 100%;
+    background-image: linear-gradient(210deg, #61722e, #225e23, #08192f, #0d8e8e);
+    background-size: 200% 200%;
+    animation: gradient-animation 30s ease infinite;
+    padding: 1.5vh 2vw 12.5vh;
   }
   @keyframes gradient-animation {
     0% {
@@ -90,7 +82,7 @@
   .icon {
     width: auto;
     height: 14.5vh;
-    margin: 2.7vh 0;
+    margin: 1vh 0;
     align-self: center;
   }
 

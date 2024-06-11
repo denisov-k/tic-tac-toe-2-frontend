@@ -54,6 +54,7 @@
   }
   svg.icon {
     width: auto;
+    height: 37.5vh;
     align-self: center;
   }
 </style>

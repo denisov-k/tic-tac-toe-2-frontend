@@ -26,7 +26,7 @@
   svg.icon {
     width: auto;
     height: 14.5vh;
-    margin: 2.7vh 0;
+    margin: 1vh 0;
   }
   .name {
     margin: 2.7vh 0;

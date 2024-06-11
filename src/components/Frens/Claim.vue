@@ -56,7 +56,7 @@
   }
   .coin-icon {
     width: auto;
-    height: 3.75vh;
+    height: 3.8vh;
     padding-right: 1vw;
   }
   .value {

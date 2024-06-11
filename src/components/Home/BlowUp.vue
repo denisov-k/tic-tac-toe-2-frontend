@@ -1,7 +1,7 @@
 <template>
   <div id="blow-up" :class="userTeam === 'red' ? 'red': 'blue'">
     <div class="button enabled" v-on:click="blowUp" v-if="enabled">
-      <span>{{ $t('blow_up') }} +{{ value }}</span>
+      <span>{{ $t('blow_up') }} +{{ valueFormatted }}</span>
     </div>
     <div class="button" v-else>
       <span class="recovery">{{ $t('recovery') }} +{{ valueFormatted }}</span>
@@ -42,6 +42,7 @@
           return;
 
         this.inAction = true;
+        // window.navigator.vibrate([200]);
         this.afterClick();
 
         this.service = new Service();
@@ -60,8 +61,8 @@
         const seconds = dateObj.getSeconds();
 
         return `${hours.toString().padStart(2, '0')}h
-            ${minutes.toString().padStart(2, '0')}m`;
-            //+ ':' + seconds.toString().padStart(2, '0');
+            ${minutes.toString().padStart(2, '0')}m
+            ${seconds.toString().padStart(2, '0')}s`;
       },
       reduceTimer(){
         if (this.timer > 0) {
@@ -78,11 +79,20 @@
           this.timer = 0;
       },
       resetValue() {
-        this.value = this.$store.state.session.user.last_blow_up ? ((6 * 60 * 60 - this.timer) / (6 * 60) / 100) * 5 : 100;
+        const lastBlowUp = this.$store.state.session.user.last_blow_up;
+        this.value = (6 * 60 * 60 - this.timer) / (6 * 60 * 60) * 5;
+        console.log((6 * 60 * 60 - this.timer) / (6 * 60 * 60) * 5);
+
+        if (!lastBlowUp)
+          this.value = 100
+        else if (this.value > 5)
+          this.value = 5;
+
+        this.valueFormatted = (this.value).toFixed(3);
       },
       increaseValue() {
         if (this.value < 5) {
-          this.value = ((6 * 60 * 60 - this.timer) / (6 * 60) / 100) * 5;
+          this.value = (6 * 60 * 60 - this.timer) / (6 * 60 * 60) * 5;
           this.valueFormatted = (this.value).toFixed(3);
         }
       }

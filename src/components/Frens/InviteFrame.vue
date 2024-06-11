@@ -50,6 +50,7 @@
     top: 0;
     bottom: 0;
     align-content: flex-end;
+    z-index: 100;
   }
   .invite-popup {
     display: flex;

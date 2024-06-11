@@ -2,8 +2,9 @@
   <footer class="layouts--footer">
     <div class="footer-content">
       <div class="navigation-button" v-for="(button, key) in navigationButtons" :key="key"
-           v-on:click="goTo(button.name)" :class="{'selected': isButtonSelected(button)}">
-        <inline-svg :src="button.image" class="image" />
+           v-on:click="goTo(button.name, $children[key])" :class="{'selected': isButtonSelected(button)}">
+        <lottie class="image" :animation-data="button.image" :auto-play="false" :loop="false"
+                @complete="loopComplete"></lottie>
         <span>{{ button.caption }}</span>
       </div>
     </div>
@@ -18,9 +19,9 @@ export default {
   data() {
     return {
       navigationButtons: [
-        { name: 'home', caption: this.$t('home'), image: require('@/assets/images/navigation/home.svg') },
-        { name: 'tasks', caption: this.$t('tasks'), image: require('@/assets/images/navigation/tasks.svg') },
-        { name: 'frens', caption: this.$t('frens'), image: require('@/assets/images/navigation/frens.svg') },
+        { name: 'home', caption: this.$t('home'), image: require('../assets/images/navigation/home_nav.json') },
+        { name: 'tasks', caption: this.$t('tasks'), image: require('../assets/images/navigation/tasks_nav.json') },
+        { name: 'frens', caption: this.$t('frens'), image: require('../assets/images/navigation/frens_nav.json') },
       ]
     }
   },
@@ -28,13 +29,17 @@ export default {
 
   },
   methods: {
-    goTo(route) {
+    goTo(route, el) {
+      el.play();
       if (this.$route.name !== route)
         this.$router.push({ name: route });
     },
     isButtonSelected(button) {
 
       return this.$route.name === button.name
+    },
+    loopComplete(image) {
+      image.goToAndStop(0);
     }
   },
   created: function () {
@@ -60,11 +65,14 @@ export default {
 
 <style scoped>
   .layouts--footer {
+    position: absolute;
+    bottom: 0;
     width: 100%;
     border-radius: 13px;
     display: flex;
     align-items: center;
     box-sizing: border-box;
+    padding: 1.5vh 2vw;
   }
   .footer-content {
     flex-direction: row;
@@ -91,8 +99,8 @@ export default {
   .navigation-button .image {
     stroke: #898989;
     width: auto;
-    height: 2.5vh;
-    margin-bottom: 0.7vh;
+    height: 2.75vh !important;
+    margin-bottom: 0.5vh !important;
   }
   .navigation-button.selected .image{
     stroke: white;

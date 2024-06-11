@@ -1,20 +1,19 @@
 <template>
   <div id="blow-up-animation" v-if="isShowing">
-    <lottie-animation :path="animationPath" :loop="false" @AnimControl="setAnimController"></lottie-animation>
+    <lottie :animation-data="animationPath" :loop="false" @AnimControl="setAnimController"></lottie>
   </div>
 </template>
 
 <script>
-  import LottieAnimation from "lottie-vuejs/src/LottieAnimation";
-
   export default {
     name: "InviteFrame",
     components: {
-      LottieAnimation
+
     },
     computed: {
       animationPath() {
-        return this.$store.state.session.user.team === 'red' ? './home_red_arrow.json' : './home_blue_arrow.json';
+        return this.$store.state.session.user.team === 'red' ?
+            require('@/assets/images/home/home_red_arrow.json') : require('@/assets/images/home/home_blue_arrow.json');
       }
     },
     data() {
@@ -37,11 +36,11 @@
 
 <style scoped>
   #blow-up-animation {
+    display: flex;
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    align-content: flex-end;
   }
 </style>

@@ -35,13 +35,12 @@
 
 <style scoped>
   #choose-team {
-    /*width: calc(100% - 20px);
-    margin-bottom: 10px;*/
+    padding: 3vh 0;
   }
   .caption {
     color: #fff;
-    font-size: 24px;
-    margin: 15px;
+    font-size: 2.4vh;
+    margin: 2vh 0;
     white-space-collapse: preserve-breaks;
     display: flex;
     justify-content: center;
@@ -53,12 +52,10 @@
   }
   .button {
     flex: auto;
-    height: 150px;
-    border-radius: 10px;
+    height: 15.7vh;
     align-content: center;
     cursor: pointer;
-    font-size: 16px;
-    margin: 10px;
+    margin: 2vh 0;
   }
   svg.icon {
     width: 100%;

@@ -20,11 +20,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 3vh 0;
   }
   .caption {
-    font-size: 32px;
-    font-weight: 600;
+    font-size: 3vh;
   }
 </style>
 

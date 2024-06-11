@@ -34,5 +34,6 @@
   }
   .value {
     padding-right: 2vw;
+    align-content: center;
   }
 </style>
