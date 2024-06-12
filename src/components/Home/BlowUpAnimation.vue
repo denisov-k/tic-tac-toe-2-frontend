@@ -1,12 +1,13 @@
 <template>
-  <div id="blow-up-animation" v-if="isShowing">
-    <lottie :animation-data="animationPath" :loop="false" @AnimControl="setAnimController"></lottie>
+  <div id="blow-up-animation" v-show="isShowing">
+    <lottie ref="animation" :animation-data="animationPath" :loop="false"
+            :auto-play="false" @complete="hide"></lottie>
   </div>
 </template>
 
 <script>
   export default {
-    name: "InviteFrame",
+    name: "BlowUpAnimation",
     components: {
 
     },
@@ -25,10 +26,12 @@
 
     },
     methods: {
-      setAnimController(controller) {
-        controller.addEventListener('complete', (data) => {
-          this.isShowing = false;
-        })
+      show() {
+        this.isShowing = true;
+        this.$refs.animation.anim.goToAndPlay(0, true);
+      },
+      hide() {
+        this.isShowing = false;
       }
     }
   }

@@ -77,6 +77,31 @@ export default new Router({
       }
     },
     {
+      path: '/changelog',
+      name: 'changelog',
+      components: {
+        footer: Footer,
+        default: () => import('@/views/Changelog.vue')
+      },
+      meta: {
+        title: 'Changelog',
+        description: '',
+        viewTitle: '',
+        viewDescription: '',
+        icon: '',
+        visible: true,
+        authGroups: [],
+      },
+      children: [],
+      beforeEnter: (to, from, next) => {
+        if (store.state.session.user.team) {
+          next();
+        } else {
+          next('onboarding');
+        }
+      }
+    },
+    {
       path: '/onboarding',
       name: 'onboarding',
       components: {

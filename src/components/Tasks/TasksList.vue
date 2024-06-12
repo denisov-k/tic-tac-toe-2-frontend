@@ -4,11 +4,11 @@
       <inline-svg :src="icons[task.type]" class="icon"></inline-svg>
       <div class="captions">
         <div>
-          <span>{{ task.name }}</span>
+          <div>{{ task.name }}</div>
         </div>
         <div>
           <inline-svg :src="require('@/assets/images/tasks/coin.svg')" class="coin-icon"></inline-svg>
-          <span>+ {{ task.reward }}</span>
+          <div>+ {{ task.reward }}</div>
         </div>
       </div>
       <div class="button completed" v-if="task.completed">
@@ -68,17 +68,18 @@
 
 <style scoped>
   .tasks-list {
-    margin: 1vh auto;
+    margin: 1.2vh auto;
     width: calc(100% - 30px);
   }
   .task-item {
-    padding: 1.5vh 3vw;
+    padding: 1.5vh 3.5vw;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     background-color: #00000099;
-    margin: 1.5vh 0;
+    margin: 2.5vh 0;
     font-size: 1.5vh;
+    border-radius: 9px;
   }
   .task-item > svg {
     width: auto;
@@ -95,6 +96,7 @@
     display: flex;
     align-items: center;
     padding: 0.3vh 0;
+    text-align: center;
   }
   .coin-icon {
     width: auto;
@@ -115,6 +117,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 6px;
   }
   .start {
     background-color: #151515;

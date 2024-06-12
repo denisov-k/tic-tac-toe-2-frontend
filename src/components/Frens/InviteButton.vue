@@ -18,18 +18,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: calc(100% - 30px);
-    background-color: #04B75C;
+    width: calc(100% - 24px);
     color: white;
-    margin: 2.7vh auto;
     cursor: pointer;
-    border: 3px solid;
-    border-image-slice: 1;
-    border-image-source: linear-gradient(to left, #ffffff, #04B75C);
-    box-shadow: 0 0 10px 3px #04B75C;
-    height: 7vh;
+    border: 3.5px solid #04B75C;
+    box-shadow: 0 0 15px 4px #04B75C;
+    height: 7.8vh;
     font-size: 1.9vh;
+    border-radius: 8px;
+    background-image: linear-gradient(210deg, #1a9255, #04B75C);
+    margin: 2.5vh auto;
+    box-sizing: border-box;
   }
+
 </style>
 
 <i18n>

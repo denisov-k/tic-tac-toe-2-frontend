@@ -56,7 +56,7 @@
             'get', {withCredentials: true })
       },
       showAnimation() {
-        this.$refs['animation'].isShowing = true;
+        this.$refs['animation'].show();
       }
     },
     computed: {
@@ -79,14 +79,14 @@
     flex-direction: column;
     flex: auto;
     justify-content: space-between;
-    overflow-y: auto;
+    overflow: hidden;
     box-sizing: border-box;
     width: 100%;
     align-items: center;
     height: 100%;
     background-size: 200% 200%;
     animation: gradient-animation 30s ease infinite;
-    padding: 1.5vh 2vw 12.5vh;
+    padding: 1.5vh 2vw 12vh;
   }
   @keyframes gradient-animation {
     0% {

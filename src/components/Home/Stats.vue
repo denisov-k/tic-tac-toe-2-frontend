@@ -1,16 +1,21 @@
 <template>
   <div id="stats">
-    <span class="first-team">{{ firstTeam }}</span>
+    <div class="first-team">{{ firstTeam }}</div>
     <inline-svg :src="require('@/assets/images/home/blue-score.svg')" class="icon" />
-    <span> vs </span>
+    <div> vs </div>
     <inline-svg :src="require('@/assets/images/home/red-score.svg')" class="icon" />
-    <span class="second-team">{{ secondTeam }}</span>
+    <div class="second-team">{{ secondTeam }}</div>
   </div>
 </template>
 
 <script>
   export default {
     name: "Stats",
+    data: () => {
+      return {
+        balances: []
+      }
+    },
     props: {
       stats: Array
     },
@@ -25,6 +30,20 @@
         const value =  team ? team.total_balance : 0
         return Number(value).toFixed(2);
       }
+    },
+    methods: {
+      animateValue(obj, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+          obj.innerHTML = (progress * (end - start) + start).toFixed(3);
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          }
+        };
+        window.requestAnimationFrame(step);
+      }
     }
   }
 </script>
@@ -32,7 +51,12 @@
 <style scoped>
   #stats {
     font-size: 2.4vh;
-    margin: 2.7vh 0;
+    margin: 2.5vh 0;
+    display: flex;
+    align-items: center;
+  }
+  #stats > div {
+    height: 100%;
     display: flex;
     align-items: center;
   }
@@ -44,6 +68,6 @@
   }
   svg.icon {
     width: auto;
-    height: 3.75vh;
+    height: 6.25vh;
   }
 </style>

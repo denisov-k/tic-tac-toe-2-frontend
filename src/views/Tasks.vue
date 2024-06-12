@@ -58,7 +58,7 @@
     background-image: linear-gradient(210deg, #151515, #430534, #013d3d, #000000);
     background-size: 200% 200%;
     animation: gradient-animation 40s ease infinite;
-    padding: 1.5vh 2vw 12.5vh;
+    padding: 1.5vh 2vw 12vh;
   }
 
   @keyframes gradient-animation {
@@ -78,13 +78,13 @@
     align-self: center;
   }
   .header {
-    font-size: 2.4vh;
-    margin: 2.7vh 0;
+    font-size: 2.5vh;
+    margin: 2.5vh 0;
     display: flex;
     flex-direction: column;
   }
   .description {
-    font-size: 1.6vh;
+    font-size: 1.8vh;
     color: white;
     padding: 0 10vw;
     margin-top: 1.5vh;

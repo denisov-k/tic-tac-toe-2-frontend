@@ -29,14 +29,17 @@ export default {
 <style src="../node_modules/flexboxgrid/dist/flexboxgrid.min.css"></style>
 <style>
   @font-face {
-    font-family: "HelveticaNeueCyr";
-    src: url('~@/assets/fonts/HelveticaNeueCyr-Medium.ttf');
+
+    /*font-family: "OpenSans";
+    src: url('~@/assets/fonts/OpenSans.ttf');*/
+    font-family: "Roboto";
+    src: url('~@/assets/fonts/Roboto-Medium.ttf');
   }
 
   html, body {
     height: 100%;
     overflow: hidden;
-    font-size: clamp(12px, 2.75vw, 1.5vh);
+    /*font-size: clamp(12px, 2.75vw, 1.5vh);*/
   }
   body {
     margin: auto;
@@ -44,7 +47,7 @@ export default {
   }
 
   #app {
-    font-family: "HelveticaNeueCyr",serif;
+    font-family: "Roboto",serif;
     text-align: center;
     color: white;
     display: flex;

@@ -18,7 +18,7 @@
    flex-direction: column;
    align-items: center;
    box-sizing: border-box;
-   margin: 2.7vh 0;
+   margin: 2.5vh 0;
  }
  .game-icon {
    fill: #535559;

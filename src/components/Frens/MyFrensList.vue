@@ -5,11 +5,12 @@
       <div class="ref-item" v-for="ref in refs" :key="ref.id">
         <inline-svg :src="require('@/assets/images/frens/fren.svg')" class="icon" />
         <div class="name">
-          <span>{{ ref.first_name }}</span>
-          <span>{{ ref.refs }}</span>
+          <span :class="ref.item === 'red' ? 'red': 'blue'">{{ ref.first_name }}</span>
+          <span class="frens-count">{{ ref.refs }}</span>
         </div>
         <div class="balance">
-          <span>{{ ref.balance.toFixed(3) }}</span>
+          <inline-svg :src="require('@/assets/images/frens/coin.svg')" class="coin" />
+          <span>{{ Number(ref.balance).toFixed(3) }}</span>
         </div>
       </div>
     </div>
@@ -47,7 +48,7 @@
 <style scoped>
   #my-frens-list {
     width: 100%;
-    margin: 2.7vh auto;
+    margin: 2.5vh auto;
   }
   .caption {
     font-size: 1.9vh;
@@ -68,6 +69,7 @@
     margin: 1.5vh 0;
     padding: 0 5vw;
     font-size: 1.5vh;
+    border-radius: 10px;
   }
   .ref-item .icon {
     width: auto;
@@ -77,11 +79,26 @@
   .ref-item .balance {
     margin-right: 0;
     margin-left: auto;
+    display: flex;
+    align-items: center;
   }
   .ref-item .name {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+  .coin {
+    width: auto;
+    height: 5.7vh;
+  }
+  span.blue {
+    color: #3BADFF;
+  }
+  span.red {
+    color: #FF0A47;
+  }
+  span.frens-count {
+    color: #828282;
   }
 </style>
 

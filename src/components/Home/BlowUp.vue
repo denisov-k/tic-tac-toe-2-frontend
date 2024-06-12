@@ -81,7 +81,6 @@
       resetValue() {
         const lastBlowUp = this.$store.state.session.user.last_blow_up;
         this.value = (6 * 60 * 60 - this.timer) / (6 * 60 * 60) * 5;
-        console.log((6 * 60 * 60 - this.timer) / (6 * 60 * 60) * 5);
 
         if (!lastBlowUp)
           this.value = 100
@@ -108,32 +107,34 @@
 <style scoped>
   #blow-up {
     width: calc(100% - 24px);
-    margin: 2.7vh 0;
+    margin: 2.5vh auto;
     position: relative;
   }
   .button {
-    height: 7vh;
+    height: 7.8vh;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.9vh;
     background-color: #151515;
     color: white;
+    border-radius: 8px;
+    box-sizing: border-box;
   }
   .button.enabled {
     cursor: pointer;
-    border: 3px solid;
+    border: 3.5px solid;
     border-image-slice: 1;
   }
   .red .button.enabled {
     background-color: #FF0A47;
-    border-image-source: linear-gradient(to left, #ffffff, #FF0A47);
-    box-shadow: 0 0 10px 3px #FF0A47;
+    box-shadow: 0 0 15px 4px #FF0A47;
+    border-color: #ff4e79;
   }
   .blue .button.enabled {
-    background-color: #3BADFF;
-    border-image-source: linear-gradient(to left, #ffffff, #3BADFF);
-    box-shadow: 0 0 10px 3px #3BADFF;
+    background-image: linear-gradient(210deg, #017ad1, #3badff);
+    box-shadow: 0 0 15px 4px #3BADFF;
+    border-color: #3badff;
   }
   .recovery {
     color: #828282;

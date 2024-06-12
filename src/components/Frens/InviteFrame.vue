@@ -65,14 +65,15 @@
   }
   .button {
     background-color: #04B75C;
-    font-size: 14px;
-    margin: 10px 10px;
+    font-size: 2.3vh;
+    margin: 1.5vh 3vw;
     cursor: pointer;
-    height: 35px;
+    height: 6vh;
     display: flex;
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 10px 1px #04B75C;
+    border-radius: 7px;
   }
 
 </style>

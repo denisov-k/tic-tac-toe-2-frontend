@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     goTo(route, el) {
-      el.play();
+      el.anim.goToAndPlay(15, true);
       if (this.$route.name !== route)
         this.$router.push({ name: route });
     },
@@ -39,7 +39,7 @@ export default {
       return this.$route.name === button.name
     },
     loopComplete(image) {
-      image.goToAndStop(0);
+      //image.goToAndStop(0);
     }
   },
   created: function () {
@@ -68,7 +68,6 @@ export default {
     position: absolute;
     bottom: 0;
     width: 100%;
-    border-radius: 13px;
     display: flex;
     align-items: center;
     box-sizing: border-box;
@@ -80,7 +79,7 @@ export default {
     width: 100%;
     height: 9.7vh;
     background-color: #1212128a;
-    border-radius: 13px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
   }
@@ -99,8 +98,8 @@ export default {
   .navigation-button .image {
     stroke: #898989;
     width: auto;
-    height: 2.75vh !important;
-    margin-bottom: 0.5vh !important;
+    height: 3.5vh !important;
+    margin-bottom: 0.3vh !important;
   }
   .navigation-button.selected .image{
     stroke: white;

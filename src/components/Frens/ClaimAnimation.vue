@@ -1,13 +1,14 @@
 <template>
-  <div id="claim-animation" v-if="isShowing">
-    <lottie :animation-data="require('@/assets/images/frens/claim_animation.json')" :loop="false" @AnimControl="setAnimController"></lottie>
+  <div id="claim-animation" v-show="isShowing">
+    <lottie :animation-data="require('@/assets/images/frens/claim_animation.json')"
+            ref="animation" :loop="false" :auto-play="false" @complete="hide"></lottie>
   </div>
 </template>
 
 <script>
 
   export default {
-    name: "InviteFrame",
+    name: "ClaimAnimation",
     components: {
 
     },
@@ -23,10 +24,12 @@
 
     },
     methods: {
-      setAnimController(controller) {
-        controller.addEventListener('complete', (data) => {
-          this.isShowing = false;
-        })
+      show() {
+        this.isShowing = true;
+        this.$refs.animation.anim.goToAndPlay(0, true);
+      },
+      hide() {
+        this.isShowing = false;
       }
     }
   }

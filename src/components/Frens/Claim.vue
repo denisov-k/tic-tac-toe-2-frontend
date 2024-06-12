@@ -2,7 +2,7 @@
   <div id="claim">
     <div class="balance">
       <inline-svg :src="require('@/assets/images/tasks/coin.svg')" class="coin-icon"></inline-svg>
-      <span class="value">{{ balance }}</span>
+      <div class="value">{{ balance }}</div>
     </div>
     <div class="button" v-on:click="claim" v-if="balance > 0">
       {{ $t('claim') }}
@@ -42,7 +42,7 @@
 <style scoped>
   #claim {
     width: calc(100% - 30px);
-    margin: 2.7vh auto;
+    margin: 2.5vh auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -72,6 +72,7 @@
     height: 3.75vh;
     box-shadow: 0 0 10px 3px #04B75C;
     cursor: pointer;
+    border-radius: 5px;
   }
   .button.disabled {
     cursor: auto;
