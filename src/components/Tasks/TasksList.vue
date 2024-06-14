@@ -69,7 +69,7 @@
 <style scoped>
   .tasks-list {
     margin: 1.2vh auto;
-    width: calc(100% - 30px);
+    width: calc(100% - 10px);
   }
   .task-item {
     padding: 1.5vh 3.5vw;
@@ -100,7 +100,7 @@
   }
   .coin-icon {
     width: auto;
-    height: 1.6vh;
+    height: 1.7vh;
     margin-right: 1.3vw;
   }
   .completed-icon {

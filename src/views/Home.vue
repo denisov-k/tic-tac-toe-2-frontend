@@ -1,12 +1,15 @@
 <template>
   <main :class="userTeam === 'red' ? 'red': 'blue'">
     <user-info></user-info>
-    <balance></balance>
-
+    <div class="header">
+      <balance></balance>
+      <protection :after-click="showProtectAnimation"></protection>
+    </div>
     <teaser></teaser>
     <stats :stats="stats" v-if="stats"></stats>
-    <blow-up :after-click="showAnimation"></blow-up>
-    <blow-up-animation ref="animation" ></blow-up-animation>
+    <blow-up :after-click="showBlowUpAnimation"></blow-up>
+    <blow-up-animation ref="blow-up-animation" ></blow-up-animation>
+    <protect-animation ref="protect-animation"></protect-animation>
   </main>
 </template>
 
@@ -19,10 +22,14 @@
   import Teaser from "@/components/Home/Teaser";
   import Stats from "@/components/Home/Stats";
   import Service from "@/services/Service";
+  import Protection from "@/components/Home/Protection.vue";
+  import ProtectAnimation from "@/components/Home/ProtectAnimation.vue";
 
   export default {
     name: "Home",
     components: {
+      ProtectAnimation,
+      Protection,
       BlowUpAnimation,
       Stats,
       Teaser,
@@ -55,8 +62,11 @@
             },
             'get', {withCredentials: true })
       },
-      showAnimation() {
-        this.$refs['animation'].show();
+      showBlowUpAnimation() {
+        this.$refs['blow-up-animation'].show();
+      },
+      showProtectAnimation() {
+        this.$refs['protect-animation'].show();
       }
     },
     computed: {
@@ -76,6 +86,7 @@
   }
   main {
     display: flex;
+    position: relative;
     flex-direction: column;
     flex: auto;
     justify-content: space-between;
@@ -101,9 +112,10 @@
   }
   .header {
     display: flex;
-    justify-content: space-between;
+    width: calc(100% - 10px);
     align-items: center;
-    width: 100%;
+    padding-right: 15px;
+    box-sizing: border-box;
   }
 </style>
 

@@ -42,6 +42,7 @@
           return;
 
         this.inAction = true;
+        this.enabled = false;
         // window.navigator.vibrate([200]);
         this.afterClick();
 

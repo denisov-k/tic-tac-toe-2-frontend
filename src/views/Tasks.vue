@@ -73,7 +73,7 @@
     }
   }
   .icon {
-    height: 14.5vh;
+    height: 16vh;
     margin: 1vh 0;
     align-self: center;
   }

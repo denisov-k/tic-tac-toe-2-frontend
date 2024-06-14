@@ -35,6 +35,11 @@ export default class UsersService extends Service {
       'post', {withCredentials: true })
   }
 
+  protect() {
+    return this.transport.request(`game/protect`, {}, (res) => res.data,
+      'post', {withCredentials: true })
+  }
+
   getRefs() {
     return this.transport.request(`game/referrals`, {}, (res) => res.data,
       'get', {withCredentials: true })
@@ -42,6 +47,11 @@ export default class UsersService extends Service {
 
   getTasks() {
     return this.transport.request(`game/tasks`, {}, (res) => res.data,
+      'get', {withCredentials: true })
+  }
+
+  getTransactions() {
+    return this.transport.request(`game/transactions`, {}, (res) => res.data,
       'get', {withCredentials: true })
   }
 

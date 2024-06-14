@@ -47,8 +47,12 @@
 
 <style scoped>
   #my-frens-list {
+    flex: 1;
     width: 100%;
     margin: 2.5vh auto;
+    min-height: 6vh;
+    display: flex;
+    flex-direction: column;
   }
   .caption {
     font-size: 1.9vh;
@@ -57,19 +61,24 @@
     display: flex;
   }
   .refs-list {
-    margin: auto;
+    margin: 0;
     overflow-y: auto;
-    height: 13vh;
   }
   .ref-item {
     background-color: #00000099;
     display: flex;
     align-items: center;
-    height: 6.5vh;
-    margin: 1.5vh 0;
+    height: 6.8vh;
+    margin: 2.5vh 0;
     padding: 0 5vw;
     font-size: 1.5vh;
     border-radius: 10px;
+  }
+  .ref-item:first-child {
+    margin-top: 0;
+  }
+  .ref-item:last-child {
+    margin-bottom: 0;
   }
   .ref-item .icon {
     width: auto;

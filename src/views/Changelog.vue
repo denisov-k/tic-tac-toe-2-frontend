@@ -1,49 +1,32 @@
 <template>
   <main>
-    <inline-svg :src="require('@/assets/images/frens/frens-header.svg')" class="icon" />
+    <inline-svg :src="require('@/assets/images/changelog/icon.svg')" class="icon" />
     <div class="header">
       <span>{{ $t('header') }}</span>
-      <steps></steps>
+      <span class="description">{{ $t('description') }}</span>
     </div>
-    <claim :after-click="showAnimation"></claim>
-    <claim-animation ref="animation"></claim-animation>
-    <my-frens-list></my-frens-list>
-    <invite-button :onClick="showInvitePopup"></invite-button>
-    <invite-frame ref="invite-popup"></invite-frame>
+    <transactions-list></transactions-list>
   </main>
 </template>
 
 <script>
 
-  import Steps from "@/components/Frens/Steps";
-  import InviteButton from "@/components/Frens/InviteButton";
-  import InviteFrame from "@/components/Frens/InviteFrame";
-  import MyFrensList from "@/components/Frens/MyFrensList.vue";
-  import Claim from "@/components/Frens/Claim.vue";
-  import ClaimAnimation from "@/components/Frens/ClaimAnimation.vue";
-  import BlowUp from "@/components/Home/BlowUp.vue";
+  import TransactionsList from "@/components/Changelog/TransactionsList.vue";
 
   export default {
-    name: "Frens",
-    components: {BlowUp, Claim, ClaimAnimation, MyFrensList, InviteButton, InviteFrame, Steps},
+    name: "Changelog",
+    components: {
+      TransactionsList
+    },
     data() {
       return {
-        // isPopupShowing: false
       }
     },
     created() {
 
     },
     methods: {
-      showInvitePopup() {
-        this.$refs['invite-popup'].show();
-      },
-      showMyFrensPopup() {
-        this.$refs['my-frens-popup'].show();
-      },
-      showAnimation() {
-        this.$refs['animation'].show();
-      }
+
     }
   }
 </script>
@@ -55,11 +38,10 @@
     flex: auto;
     /*overflow-y: auto;*/
     box-sizing: border-box;
-    justify-content: space-between;
     width: 100%;
     align-items: center;
     height: 100%;
-    background-image: linear-gradient(210deg, #61722e, #225e23, #08192f, #0d8e8e);
+    background-image: linear-gradient(210deg, #678217, #5e2249, #08192f, #0d8e8e);
     background-size: 200% 200%;
     animation: gradient-animation 30s ease infinite;
     padding: 1.5vh 2vw 12vh;
@@ -77,27 +59,32 @@
     }
   }
   .header {
+    display: flex;
+    flex-direction: column;
     font-size: 2.5vh;
     margin: 2.5vh 0;
   }
   .icon {
     width: auto;
-    height: 14.5vh;
+    height: 16vh;
     margin: 1vh 0;
     align-self: center;
   }
-
+  .description {
+    font-size: 1.7vh;
+    margin-top: 1vh;
+  }
 </style>
 
 <i18n>
   {
     "en": {
-      "header": "Invite frens",
-      "how_it_works": "How it works"
+      "header": "Changelog",
+      "description": "Check out the changelog"
     },
     "ru": {
-      "header": "Invite frens",
-      "how_it_works": "How it works"
+      "header": "Changelog",
+      "description": "Check out the changelog"
     }
   }
 </i18n>

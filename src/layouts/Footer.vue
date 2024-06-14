@@ -3,7 +3,7 @@
     <div class="footer-content">
       <div class="navigation-button" v-for="(button, key) in navigationButtons" :key="key"
            v-on:click="goTo(button.name, $children[key])" :class="{'selected': isButtonSelected(button)}">
-        <lottie class="image" :animation-data="button.image" :auto-play="false" :loop="false"
+        <lottie class="image" :animation-data="button.image" :auto-play="false" :ref="key" :loop="false"
                 @complete="loopComplete"></lottie>
         <span>{{ button.caption }}</span>
       </div>
@@ -20,6 +20,7 @@ export default {
     return {
       navigationButtons: [
         { name: 'home', caption: this.$t('home'), image: require('../assets/images/navigation/home_nav.json') },
+        { name: 'changelog', caption: this.$t('changelog'), image: require('../assets/images/navigation/changelog_nav.json') },
         { name: 'tasks', caption: this.$t('tasks'), image: require('../assets/images/navigation/tasks_nav.json') },
         { name: 'frens', caption: this.$t('frens'), image: require('../assets/images/navigation/frens_nav.json') },
       ]
@@ -42,8 +43,10 @@ export default {
       //image.goToAndStop(0);
     }
   },
-  created: function () {
-
+  mounted: function () {
+    Object.values(this.$refs).forEach(([item]) => {
+      item.anim.goToAndStop(item.anim.totalFrames, true);
+    })
   }
 }
 </script>
@@ -52,11 +55,13 @@ export default {
   {
     "en": {
       "home": "Home",
+      "changelog": "Changelog",
       "tasks": "Tasks",
       "frens": "Frens"
     },
     "ru": {
       "home": "Главная",
+      "changelog": "Changelog",
       "tasks": "Задачи",
       "frens": "Друзья"
     }
@@ -92,6 +97,10 @@ export default {
     align-items: center;
     font-size: 1.35vh;
   }
+  .navigation-button:hover {
+    background-color: unset !important;
+    color: unset !important;
+  }
   .navigation-button.selected {
     color: white;
   }
@@ -100,8 +109,5 @@ export default {
     width: auto;
     height: 3.5vh !important;
     margin-bottom: 0.3vh !important;
-  }
-  .navigation-button.selected .image{
-    stroke: white;
   }
 </style>
