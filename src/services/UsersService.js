@@ -13,15 +13,21 @@ export default class UsersService extends Service {
     Telegram.WebApp.setBackgroundColor('#000000');
     Telegram.WebApp.setHeaderColor('#000000');
 
-    let user = {
-      ...Telegram.WebApp.initDataUnsafe.user,
-      ref: Telegram.WebApp.initDataUnsafe.start_param
-    };
+    let tgData = Telegram.WebApp.initDataUnsafe;
 
-    if (!user.id)
+    /*let tgData = [
+      'auth_date=' + Telegram.WebApp.initDataUnsafe['auth_date'],
+      'chat_instance=' + Telegram.WebApp.initDataUnsafe['chat_instance'],
+      'chat_type=' + Telegram.WebApp.initDataUnsafe['chat_type'],
+      'user=' + JSON.stringify(Telegram.WebApp.initDataUnsafe['user']),
+    ]*/
+
+    console.log(tgData)
+
+    if (!tgData.user.id)
       return Promise.reject('No have user data');
 
-    return this.transport.request(`auth/identify`, user, (res) => res.data,
+    return this.transport.request(`auth/identify`, tgData, (res) => res.data,
       'post', {withCredentials: true })
   }
 
@@ -31,6 +37,7 @@ export default class UsersService extends Service {
   }
 
   blowUp() {
+    //return Promise.resolve();
     return this.transport.request(`game/blow_up`, {}, (res) => res.data,
       'post', {withCredentials: true })
   }

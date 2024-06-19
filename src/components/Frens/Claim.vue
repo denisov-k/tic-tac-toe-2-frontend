@@ -73,6 +73,7 @@
     box-shadow: 0 0 10px 3px #04B75C;
     cursor: pointer;
     border-radius: 5px;
+    -webkit-tap-highlight-color: transparent;
   }
   .button.disabled {
     cursor: auto;

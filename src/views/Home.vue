@@ -17,10 +17,10 @@
 
   import BlowUpAnimation from "@/components/Home/BlowUpAnimation";
   import UserInfo from "@/components/Home/UserInfo";
-  import Balance from "@/components/Home/Balance";
+  import Balance from "@/components/Home/UserBalance.vue";
   import BlowUp from "@/components/Home/BlowUp";
   import Teaser from "@/components/Home/Teaser";
-  import Stats from "@/components/Home/Stats";
+  import Stats from "@/components/Home/TeamBalance.vue";
   import Service from "@/services/Service";
   import Protection from "@/components/Home/Protection.vue";
   import ProtectAnimation from "@/components/Home/ProtectAnimation.vue";
@@ -79,10 +79,12 @@
 
 <style scoped>
   main.red {
-    background-image: linear-gradient(210deg, #660029, #403909, #121316, #6e0a32);
+    background-image: radial-gradient(circle at 50% -100%, #FF0A4780 48%, hsla(0, 0%, 0%, 0.5) 70%), radial-gradient(circle at 51% 101%, #FF0A4780 20%, hsla(0, 0%, 0%, 0.5) 46%);
+    background-size: 100% 100%, 100% 100%;
   }
   main.blue {
-    background-image: linear-gradient(210deg, #051929, #134d7e, #403909, #0c1a45, #0d448e);
+    background-image: radial-gradient(circle at 50% -100%, hsl(202.71deg 67.39% 40.27% / 50%) 48%, hsla(0, 0%, 0%, 0.5) 70%), radial-gradient(circle at 51% 101%, hsl(202.71deg 84.42% 37.74% / 50%) 20%, hsla(0, 0%, 0%, 0.5) 46%);
+    background-size: 100% 100%, 100% 100%;
   }
   main {
     display: flex;
@@ -114,7 +116,7 @@
     display: flex;
     width: calc(100% - 10px);
     align-items: center;
-    padding-right: 15px;
+    padding-right: 2vw;
     box-sizing: border-box;
   }
 </style>

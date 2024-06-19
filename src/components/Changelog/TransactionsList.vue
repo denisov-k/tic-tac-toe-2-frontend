@@ -30,7 +30,8 @@
         icons: {
           'increase': {
             'blow_up': require('@/assets/images/changelog/increase.svg'),
-            'referral_registration': require('@/assets/images/changelog/frens.svg'),
+            'registration': require('@/assets/images/changelog/registration.svg'),
+            'referral_registration': require('@/assets/images/changelog/task.svg'),
             'task': require('@/assets/images/changelog/task.svg'),
           },
           'decrease': {
@@ -74,7 +75,7 @@
     padding: 1.5vh 3.5vw;
     display: flex;
     flex-direction: row;
-    background-color: #00000099;
+    background-color: #1d2025;
     margin: 2.5vh 0;
     font-size: 1.5vh;
     border-radius: 9px;

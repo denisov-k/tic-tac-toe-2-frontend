@@ -13,21 +13,18 @@
 </template>
 
 <script>
-  import UsersService from '../../services/UsersService';
-
   export default {
     name: "ChooseTeam",
+    props: {
+      afterClick: Function
+    },
     methods: {
       chooseTeam(team) {
+        this.afterClick(team);
+
         this.$store.dispatch('setTeam', team).then(() => {
-          console.log(this.$store.state.session.user)
           this.$router.push('/');
         })
-        /*let service = new UsersService();
-
-        service.chooseTeam(team).then(() => {
-          this.$router.push('home');
-        })*/
       }
     }
   }
@@ -56,6 +53,7 @@
     align-content: center;
     cursor: pointer;
     margin: 2vh 0;
+    -webkit-tap-highlight-color: transparent;
   }
   svg.icon {
     width: 100%;

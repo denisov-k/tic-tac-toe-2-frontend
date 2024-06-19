@@ -21,13 +21,12 @@
    margin: 2.5vh 0;
  }
  .game-icon {
-   fill: #535559;
    margin: 0 0 1vh 0;
    width: auto;
    height: 15vh;
  }
  span {
-   color: #989999;
+   color: #545559;
  }
  .caption-1 {
    font-size: 1.5vh;

@@ -93,6 +93,7 @@
     border-radius: 6px;
     box-sizing: border-box;
     padding: 0 2vw;
+    -webkit-tap-highlight-color: transparent;
   }
   .button svg {
     fill: #828282;

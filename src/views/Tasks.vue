@@ -55,8 +55,8 @@
     width: 100%;
     align-items: center;
     height: 100%;
-    background-image: linear-gradient(210deg, #151515, #430534, #013d3d, #000000);
-    background-size: 200% 200%;
+    background-image: radial-gradient(circle at 50% -100%, #19FFFF80 48%, hsla(0, 0%, 0%, 0.5) 70%), radial-gradient(circle at 51% 101%, #19FFFF80 20%, hsla(0, 0%, 0%, 0.5) 46%);
+    background-size: 100% 100%, 100% 100%;
     animation: gradient-animation 40s ease infinite;
     padding: 1.5vh 2vw 12vh;
   }

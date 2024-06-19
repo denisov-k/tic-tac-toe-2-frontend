@@ -76,7 +76,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: #00000099;
+    background-color: #1d2025;
     margin: 2.5vh 0;
     font-size: 1.5vh;
     border-radius: 9px;
@@ -118,6 +118,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 6px;
+    -webkit-tap-highlight-color: transparent;
   }
   .start {
     background-color: #151515;

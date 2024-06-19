@@ -2,19 +2,22 @@
   <main>
     <greetings></greetings>
     <inline-svg :src="require('@/assets/images/home/cube.svg')" class="icon" />
-    <choose-team></choose-team>
+    <choose-team :after-click="showAnimation"></choose-team>
+    <choose-team-animation ref="animation"></choose-team-animation>
   </main>
 </template>
 
 <script>
   import ChooseTeam from "@/components/Onboarding/ChooseTeam";
+  import ChooseTeamAnimation from "@/components/Onboarding/ChooseTeamAnimation.vue";
   import Greetings from "@/components/Onboarding/Greetings.vue";
 
   export default {
     name: "Onboarding",
     components: {
       Greetings,
-      ChooseTeam
+      ChooseTeam,
+      ChooseTeamAnimation
     },
     data() {
       return {}
@@ -22,7 +25,11 @@
     created() {
 
     },
-    methods: {}
+    methods: {
+      showAnimation(team) {
+        this.$refs['animation'].show(team);
+      }
+    }
   }
 </script>
 

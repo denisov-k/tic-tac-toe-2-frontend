@@ -80,10 +80,9 @@ export default {
   }
   .footer-content {
     flex-direction: row;
-    justify-content: space-around;
     width: 100%;
     height: 9.7vh;
-    background-color: #1212128a;
+    background-color: #1d2025;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -96,10 +95,12 @@ export default {
     color: #898989;
     align-items: center;
     font-size: 1.35vh;
+    -webkit-tap-highlight-color: transparent;
+    margin: 0 auto;
   }
-  .navigation-button:hover {
-    background-color: unset !important;
-    color: unset !important;
+  .navigation-button:focus {
+    outline: 0;
+    background: unset;
   }
   .navigation-button.selected {
     color: white;

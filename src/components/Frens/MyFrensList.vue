@@ -5,7 +5,7 @@
       <div class="ref-item" v-for="ref in refs" :key="ref.id">
         <inline-svg :src="require('@/assets/images/frens/fren.svg')" class="icon" />
         <div class="name">
-          <span :class="ref.item === 'red' ? 'red': 'blue'">{{ ref.first_name }}</span>
+          <span :class="ref.team === 'red' ? 'red': 'blue'">{{ ref.first_name }}</span>
           <span class="frens-count">{{ ref.refs }}</span>
         </div>
         <div class="balance">
@@ -65,7 +65,7 @@
     overflow-y: auto;
   }
   .ref-item {
-    background-color: #00000099;
+    background-color: #1d2025;
     display: flex;
     align-items: center;
     height: 6.8vh;
