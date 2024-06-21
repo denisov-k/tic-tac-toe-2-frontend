@@ -1,7 +1,7 @@
 <template>
   <div id="claim">
     <div class="balance">
-      <inline-svg :src="require('@/assets/images/tasks/coin.svg')" class="coin-icon"></inline-svg>
+      <inline-svg :src="require('@/assets/images/home/coin.svg')" class="coin-icon"></inline-svg>
       <div class="value">{{ balance }}</div>
     </div>
     <div class="button" v-on:click="claim" v-if="balance > 0">
@@ -79,7 +79,7 @@
     cursor: auto;
     color: #828282;
     box-shadow: unset;
-    background-color: #000000b3;
+    background-color: #151515;
   }
 </style>
 

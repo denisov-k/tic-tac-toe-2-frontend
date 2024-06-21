@@ -8,7 +8,7 @@
         </div>
         <div>
           <inline-svg :src="require('@/assets/images/changelog/coin.svg')" class="coin-icon" />
-          <span>+ {{transaction.amount.toFixed(3) }}</span>
+          <span class="reward">{{ transaction.type === 'increase' ? '+' : '-' }} {{transaction.amount.toFixed(3) }}</span>
         </div>
       </div>
     </div>
@@ -31,7 +31,8 @@
           'increase': {
             'blow_up': require('@/assets/images/changelog/increase.svg'),
             'registration': require('@/assets/images/changelog/registration.svg'),
-            'referral_registration': require('@/assets/images/changelog/task.svg'),
+            'referral_blow_up': require('@/assets/images/changelog/frens.svg'),
+            'referral_registration': require('@/assets/images/changelog/frens.svg'),
             'task': require('@/assets/images/changelog/task.svg'),
           },
           'decrease': {
@@ -109,6 +110,9 @@
     height: 1.7vh;
     margin-right: 1.3vw;
   }
+  .reward {
+    white-space: nowrap;
+  }
 </style>
 
 <i18n>
@@ -117,6 +121,7 @@
       "increase": {
         "registration": "Registration",
         "blow_up": "Blow up bonus",
+        "referral_blow_up": "Frens blow up",
         "referral_registration": "Frens bonus",
         "task": "Task bonus"
       },
@@ -128,6 +133,7 @@
       "increase": {
         "registration": "Registration",
         "blow_up": "Blow up bonus",
+        "referral_blow_up": "Frens blow up",
         "referral_registration": "Frens bonus",
         "task": "Task bonus"
       },

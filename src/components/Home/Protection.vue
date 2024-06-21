@@ -23,7 +23,9 @@
         enabled: true,
         timer: 0,
         timerFormatted: '',
-        inAction: false
+        inAction: false,
+        timeout: 30
+        //timeout: 24 * 60 * 60
       }
     },
     mounted() {
@@ -67,7 +69,7 @@
         const protectedAt = this.$store.state.session.user.protected_at;
 
         if (protectedAt)
-          this.timer = (24 * 60 * 60 * 1000 - (Date.now() - new Date(protectedAt))) / 1000;
+          this.timer = (this.timeout * 1000 - (Date.now() - new Date(protectedAt))) / 1000;
         else
           this.timer = 0;
       }

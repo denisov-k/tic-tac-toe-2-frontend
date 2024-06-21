@@ -25,16 +25,19 @@
         timerFormatted: '',
         value: 0,
         valueFormatted: '',
-        inAction: false
+        inAction: false,
+        timeout: 60,
+        maxValue: 10
+        //timeout: 6 * 60 * 60
       }
     },
     mounted() {
       this.resetTimer();
       this.resetValue();
       this.reduceTimer();
-      this.increaseValue();
+      this.updateValue();
       setInterval(this.reduceTimer, 1000);
-      setInterval(this.increaseValue, 1000);
+      //setInterval(this.updateValue, 1000);
     },
     methods: {
       async blowUp() {
@@ -68,8 +71,9 @@
             ${seconds.toString().padStart(2, '0')}s`;
       },
       reduceTimer(){
+        this.updateValue();
         if (this.timer > 0) {
-          this.timerFormatted = this.convertSecondsToTime(--this.timer);
+          this.timerFormatted = this.convertSecondsToTime(this.timer--);
           this.enabled = false;
         } else this.enabled = true;
       },
@@ -77,26 +81,25 @@
         const lastBlowUp = this.$store.state.session.user.last_blow_up;
 
         if (lastBlowUp)
-          this.timer = (6 * 60 * 60 * 1000 - (Date.now() - new Date(lastBlowUp))) / 1000;
+          this.timer = (this.timeout * 1000 - (Date.now() - new Date(lastBlowUp))) / 1000;
         else
           this.timer = 0;
       },
       resetValue() {
         const lastBlowUp = this.$store.state.session.user.last_blow_up;
-        this.value = (6 * 60 * 60 - this.timer) / (6 * 60 * 60) * 5;
+        this.value = (this.timeout - this.timer) / (this.timeout) * this.maxValue;
 
         if (!lastBlowUp)
           this.value = 100
-        else if (this.value > 5)
-          this.value = 5;
+        else if (this.value > this.maxValue)
+          this.value = this.maxValue;
 
         this.valueFormatted = (this.value).toFixed(3);
       },
-      increaseValue() {
-        if (this.value < 5) {
-          this.value = (6 * 60 * 60 - this.timer) / (6 * 60 * 60) * 5;
-          this.valueFormatted = (this.value).toFixed(3);
-        }
+      updateValue() {
+        let newValue = (this.timeout - this.timer) / (this.timeout) * this.maxValue;
+        this.value = newValue > this.maxValue ? this.maxValue : newValue;
+        this.valueFormatted = (this.value).toFixed(3);
       }
     },
     computed: {

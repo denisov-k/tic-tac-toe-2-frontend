@@ -16,6 +16,17 @@
 </script>
 
 <style scoped>
+  @keyframes border-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 95% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
   #invite-button {
     position: relative;
     display: flex;
@@ -24,10 +35,10 @@
     width: calc(100% - 24px);
     color: white;
     cursor: pointer;
-    box-shadow: 0 0 15px 4px #04B75C;
+    box-shadow: 0 0 15px 4px #1a9255;
     height: 7.8vh;
     font-size: 1.9vh;
-    background-image: linear-gradient(210deg, #1a9255, #04B75C);
+    background-image: linear-gradient(210deg, #04B75C, #00A350);
     margin: 2.5vh auto;
     box-sizing: border-box;
     -webkit-tap-highlight-color: transparent;
@@ -59,21 +70,10 @@
       width: 100%;
       z-index: -2;
       transform: rotate(0deg);
-      background: linear-gradient(100deg, #07b15b, rgb(144 249 196));
+      background: linear-gradient(100deg, #00A350, #ffffff85);
       animation: border-animation-0466b1bc 3s ease alternate infinite;
       animation-play-state: running;
       background-size: 200% 200%;
-    }
-  }
-  @keyframes border-animation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 95% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
     }
   }
 

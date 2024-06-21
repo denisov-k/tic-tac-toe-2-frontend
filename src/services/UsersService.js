@@ -13,6 +13,8 @@ export default class UsersService extends Service {
     Telegram.WebApp.setBackgroundColor('#000000');
     Telegram.WebApp.setHeaderColor('#000000');
 
+    console.log(Telegram)
+
     let tgData = Telegram.WebApp.initDataUnsafe;
 
     /*let tgData = [
@@ -24,7 +26,7 @@ export default class UsersService extends Service {
 
     console.log(tgData)
 
-    if (!tgData.user.id)
+    if (!tgData.user)
       return Promise.reject('No have user data');
 
     return this.transport.request(`auth/identify`, tgData, (res) => res.data,

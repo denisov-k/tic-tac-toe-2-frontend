@@ -59,21 +59,21 @@
     width: 100%;
     align-items: center;
     height: 100%;
-    background-image: radial-gradient(circle at 50% -100%, #04B75C80 48%, hsla(0, 0%, 0%, 0.5) 70%), radial-gradient(circle at 51% 101%, #04B75C80 20%, hsla(0, 0%, 0%, 0.5) 46%);
-    background-size: 100% 100%, 100% 100%;
-    animation: gradient-animation 30s ease infinite;
     padding: 1.5vh 2vw 12vh;
     overflow: hidden;
+    background-position: center;
+    background-image: radial-gradient(circle at 50% -100%, #04b75cb5 48%, hsla(0, 0%, 0%, 0.5) 70%), radial-gradient(circle at 51% 101%, #04b75c8a 20%, hsla(0, 0%, 0%, 0.5) 46%);
+    animation: zoom-in-zoom-out 3s linear infinite;
   }
-  @keyframes gradient-animation {
+  @keyframes zoom-in-zoom-out {
     0% {
-      background-position: 0% 50%;
+      background-size: 100% 100%;
     }
     50% {
-      background-position: 100% 50%;
+      background-size: 100% 130%;
     }
     100% {
-      background-position: 0% 50%;
+      background-size: 100% 100%;
     }
   }
   .header {

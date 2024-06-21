@@ -38,6 +38,7 @@
     position: fixed;
     width: calc(100% - 30px);
     height: 6.8vh;
+    z-index: 2;
   }
   .icon {
     height: 6.8vh;

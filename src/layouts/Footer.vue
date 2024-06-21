@@ -92,11 +92,13 @@ export default {
     flex-direction: column;
     /*font-weight: 600;*/
     cursor: pointer;
-    color: #898989;
+    color: #A5A5A5;
     align-items: center;
     font-size: 1.35vh;
     -webkit-tap-highlight-color: transparent;
-    margin: 0 auto;
+    width: 25%;
+    height: 100%;
+    justify-content: center;
   }
   .navigation-button:focus {
     outline: 0;
@@ -106,9 +108,15 @@ export default {
     color: white;
   }
   .navigation-button .image {
-    stroke: #898989;
     width: auto;
     height: 3.5vh !important;
     margin-bottom: 0.3vh !important;
+    aspect-ratio:1;
+  }
+  .image >>> path {
+    stroke: #A5A5A5;
+  }
+  .navigation-button.selected >>> path {
+    stroke: white;
   }
 </style>

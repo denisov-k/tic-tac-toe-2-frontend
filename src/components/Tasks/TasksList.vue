@@ -8,7 +8,7 @@
         </div>
         <div>
           <inline-svg :src="require('@/assets/images/tasks/coin.svg')" class="coin-icon"></inline-svg>
-          <div>+ {{ task.reward }}</div>
+          <div class="reward">+ {{ task.reward }}</div>
         </div>
       </div>
       <div class="button completed" v-if="task.completed">
@@ -129,6 +129,9 @@
     color: #000;
     box-shadow: 0 0 10px 0 #19FFFF;
     cursor: pointer;
+  }
+  .reward {
+    white-space: nowrap;
   }
 </style>
 

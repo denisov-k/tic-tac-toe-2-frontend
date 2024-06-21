@@ -27,7 +27,7 @@
     },
     methods: {
       showAnimation(team) {
-        this.$refs['animation'].show(team);
+        return this.$refs['animation'].show(team);
       }
     }
   }
@@ -44,24 +44,24 @@
     overflow-y: auto;
     box-sizing: border-box;
     width: 100%;
-    background: linear-gradient(240deg, #186219, #21306b, #1a131b, #000000);
-    background-size: 150% 140%;
-    animation: gradient-animation-65563b56 15s ease infinite;
+    background-position: center;
+    background-image: radial-gradient(circle at 50% -100%, #18621980 48%, hsla(0, 0%, 0%, 0.5) 70%), radial-gradient(circle at 51% 101%, #ff60ef80 20%, hsla(0, 0%, 0%, 0.5) 46%);
+    animation: zoom-in-zoom-out 3s linear infinite;
   }
-  @keyframes gradient-animation {
+  @keyframes zoom-in-zoom-out {
     0% {
-      background-position: 0% 50%;
+      background-size: 100% 100%;
     }
     50% {
-      background-position: 100% 50%;
+      background-size: 100% 130%;
     }
     100% {
-      background-position: 0% 50%;
+      background-size: 100% 100%;
     }
   }
   svg.icon {
     width: auto;
-    height: 37.5vh;
+    height: 40vh;
     align-self: center;
   }
 </style>

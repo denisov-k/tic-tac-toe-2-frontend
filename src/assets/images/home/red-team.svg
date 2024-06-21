@@ -19,10 +19,6 @@
 <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
 <feGaussianBlur stdDeviation="0.5" result="effect1_foregroundBlur_66_1290"/>
 </filter>
-<linearGradient id="paint0_linear_66_1290" x1="19" y1="69" x2="119" y2="69" gradientUnits="userSpaceOnUse">
-<stop stop-color="white" stop-opacity="0.7"/>
-<stop offset="1" stop-color="#FF0A47"/>
-</linearGradient>
 <linearGradient id="paint1_linear_66_1290" x1="69" y1="19" x2="69" y2="119" gradientUnits="userSpaceOnUse">
 <stop stop-color="#FF0A47"/>
 <stop offset="1" stop-color="#FF0A47" stop-opacity="0"/>

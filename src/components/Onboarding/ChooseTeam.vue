@@ -20,9 +20,10 @@
     },
     methods: {
       chooseTeam(team) {
-        this.afterClick(team);
-
-        this.$store.dispatch('setTeam', team).then(() => {
+        Promise.all([
+            this.afterClick(team),
+            this.$store.dispatch('setTeam', team)
+        ]).then(() => {
           this.$router.push('/');
         })
       }
@@ -41,6 +42,7 @@
     white-space-collapse: preserve-breaks;
     display: flex;
     justify-content: center;
+    white-space: break-spaces;
   }
   .buttons {
     display: flex;

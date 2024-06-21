@@ -78,14 +78,6 @@
 </script>
 
 <style scoped>
-  main.red {
-    background-image: radial-gradient(circle at 50% -100%, #FF0A4780 48%, hsla(0, 0%, 0%, 0.5) 70%), radial-gradient(circle at 51% 101%, #FF0A4780 20%, hsla(0, 0%, 0%, 0.5) 46%);
-    background-size: 100% 100%, 100% 100%;
-  }
-  main.blue {
-    background-image: radial-gradient(circle at 50% -100%, hsl(202.71deg 67.39% 40.27% / 50%) 48%, hsla(0, 0%, 0%, 0.5) 70%), radial-gradient(circle at 51% 101%, hsl(202.71deg 84.42% 37.74% / 50%) 20%, hsla(0, 0%, 0%, 0.5) 46%);
-    background-size: 100% 100%, 100% 100%;
-  }
   main {
     display: flex;
     position: relative;
@@ -97,20 +89,18 @@
     width: 100%;
     align-items: center;
     height: 100%;
-    background-size: 200% 200%;
-    animation: gradient-animation 30s ease infinite;
+    background-size: 100% 100%, 100% 100%;
+    /*animation: zoom-in-zoom-out 1s ease infinite;*/
     padding: 1.5vh 2vw 12vh;
+    animation: zoom-in-zoom-out 3s linear infinite;
+    background-position: center;
   }
-  @keyframes gradient-animation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+
+  main.blue {
+    background-image: radial-gradient(circle at 50% -100%, hsl(202.71deg 67.39% 40.27% / 50%) 48%, hsla(0, 0%, 0%, 0.5) 70%), radial-gradient(circle at 50% 100%, hsl(202.71deg 84.42% 37.74% / 50%) 25%, hsla(0, 0%, 0%, 0.5) 50%);
+  }
+  main.red {
+    background-image: radial-gradient(circle at 50% -100%, #FF0A4780 48%, hsla(0, 0%, 0%, 0.5) 70%), radial-gradient(circle at 50% 100%, #FF0A4780 20%, hsla(0, 0%, 0%, 0.5) 46%);
   }
   .header {
     display: flex;
@@ -118,6 +108,18 @@
     align-items: center;
     padding-right: 2vw;
     box-sizing: border-box;
+  }
+
+  @keyframes zoom-in-zoom-out {
+    0% {
+      background-size: 100% 100%;
+    }
+    50% {
+      background-size: 100% 130%;
+    }
+    100% {
+      background-size: 100% 100%;
+    }
   }
 </style>
 

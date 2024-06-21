@@ -22,13 +22,18 @@
     },
     methods: {
       show(team) {
-        console.log(team)
-        this.animationPath = team === 'red' ? require('@/assets/images/onboarding/red_team_change.json')
-           : require('@/assets/images/onboarding/blue_team_change.json')
+        return new Promise(async resolve => {
+          this.animationPath = team === 'red' ? require('@/assets/images/onboarding/red_team_change.json')
+              : require('@/assets/images/onboarding/blue_team_change.json')
 
-        this.isShowing = true;
+          this.isShowing = true;
 
-        this.$nextTick().then(() => {
+          await this.$nextTick();
+
+          this.$refs.animation.anim.addEventListener('complete', (val) => {
+            resolve();
+          })
+
           this.$refs.animation.anim.goToAndPlay(0, true);
         })
       },
@@ -42,6 +47,7 @@
 <style scoped>
   #choose-team-animation {
     display: flex;
+    justify-content: center;
     position: absolute;
     left: 0;
     right: 0;

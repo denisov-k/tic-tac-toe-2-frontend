@@ -1,10 +1,14 @@
 <template>
   <div id="team-balance">
-    <div class="first-team">{{ firstTeam }}</div>
-    <inline-svg :src="require('@/assets/images/home/blue-score.svg')" class="icon" />
+    <div class="first-team">
+      <span>{{ firstTeam }}</span>
+      <inline-svg :src="blueIcon" class="icon" />
+    </div>
     <div> vs </div>
-    <inline-svg :src="require('@/assets/images/home/red-score.svg')" class="icon" />
-    <div class="second-team">{{ secondTeam }}</div>
+    <div class="second-team">
+      <inline-svg :src="redIcon" class="icon" />
+      <span>{{ secondTeam }}</span>
+    </div>
   </div>
 </template>
 
@@ -16,6 +20,8 @@
         balances: [],
         firstTeam: (0).toFixed(2),
         secondTeam: (0).toFixed(2),
+        blueIcon: require('@/assets/images/home/blue-score.svg'),
+        redIcon: require('@/assets/images/home/red-score.svg'),
       }
     },
     props: {
@@ -75,6 +81,8 @@
     margin: 2.5vh 0;
     display: flex;
     align-items: center;
+    width: 100%;
+    justify-content: center;
   }
   #stats > div {
     height: 100%;
@@ -83,9 +91,17 @@
   }
   .first-team {
     color: #3BADFF;
+    display: flex;
+    align-items: center;
+    width: 40%;
+    justify-content: right;
   }
   .second-team {
     color: #FF0A47;
+    display: flex;
+    align-items: center;
+    width: 40%;
+    justify-content: left;
   }
   svg.icon {
     width: auto;
