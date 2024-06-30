@@ -38,7 +38,7 @@
           return;
 
         this.inAction = true;
-        // window.navigator.vibrate([200]);
+        Telegram.WebApp.HapticFeedback.notificationOccurred("success");
         this.afterClick();
 
         this.service = new Service();
@@ -85,6 +85,7 @@
     margin-left: auto;
   }
   .button {
+    position: relative;
     height: 4vh;
     display: flex;
     align-items: center;
@@ -96,6 +97,7 @@
     box-sizing: border-box;
     padding: 0 2vw;
     -webkit-tap-highlight-color: transparent;
+    z-index: 1;
   }
   .button svg {
     fill: #828282;
@@ -103,7 +105,36 @@
   .button.enabled {
     cursor: pointer;
     background-color: #04B75C;
-    box-shadow: 0 0 10px 3px #04B75C;
+
+    &:before {
+      content: "";
+      display: block;
+      border-radius: 8px;
+      position: absolute;
+      background: inherit;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -2;
+      transform: rotate(0deg);
+      background: linear-gradient(100deg, #04b75c, #FFF, #04b75c, #FFF, #04b75c);
+      animation: border-animation 7s linear infinite;
+      animation-play-state: running;
+      background-size: 200% 200%;
+      filter: blur(5px);
+    }
   }
   .button.enabled svg {
     fill: white;
@@ -116,6 +147,19 @@
     height: 3vh;
     width: auto;
     margin-right: 1.5vw;
+  }
+  @keyframes border-animation {
+    0% {
+      background-position: 0 0;
+    }
+
+    50% {
+      background-position: 100% 0;
+    }
+
+    100% {
+      background-position: 0 0;
+    }
   }
 </style>
 

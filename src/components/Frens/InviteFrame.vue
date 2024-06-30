@@ -29,6 +29,8 @@
       },
       onCopy() {
         navigator.clipboard.writeText(this.baseURL + '?startapp=' + this.$store.state.session.user.id);
+
+        Telegram.WebApp.HapticFeedback.notificationOccurred("success");
         this.hide();
       },
       onShare() {

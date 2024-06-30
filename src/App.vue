@@ -1,19 +1,26 @@
 <template>
   <div id="app">
     <router-view name="header"></router-view>
-    <router-view :key="defaultViewKey" class="content"></router-view>
+    <router-view :key="defaultViewKey" class="content" :class="{'is-loading': isLoading }"></router-view>
     <router-view name="footer"></router-view>
+    <loading v-show="isLoading"></loading>
   </div>
 </template>
 <script>
+import Loading from "@/components/Loading.vue";
 
 export default {
+  components: {Loading},
   computed: {
     defaultViewKey: function() {
       return this.$route.name;
-    }
+    },
+    isLoading() {
+      return this.$store.getters.getLoadingStatus;
+    },
   },
   created: function () {
+
   },
   mounted() {
 
@@ -59,5 +66,7 @@ export default {
     height: 100%;
     position: relative;
   }
-
+  .content.is-loading {
+    content-visibility: hidden;
+  }
 </style>

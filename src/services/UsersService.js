@@ -8,28 +8,9 @@ export default class UsersService extends Service {
    * data ~ @see userEntity()
    */
   getCurrent() {
-    Telegram.WebApp.ready();
-    Telegram.WebApp.expand();
-    Telegram.WebApp.setBackgroundColor('#000000');
-    Telegram.WebApp.setHeaderColor('#000000');
+    let data = { tgData: Telegram.WebApp.initData };
 
-    console.log(Telegram)
-
-    let tgData = Telegram.WebApp.initDataUnsafe;
-
-    /*let tgData = [
-      'auth_date=' + Telegram.WebApp.initDataUnsafe['auth_date'],
-      'chat_instance=' + Telegram.WebApp.initDataUnsafe['chat_instance'],
-      'chat_type=' + Telegram.WebApp.initDataUnsafe['chat_type'],
-      'user=' + JSON.stringify(Telegram.WebApp.initDataUnsafe['user']),
-    ]*/
-
-    console.log(tgData)
-
-    if (!tgData.user)
-      return Promise.reject('No have user data');
-
-    return this.transport.request(`auth/identify`, tgData, (res) => res.data,
+    return this.transport.request(`auth/identify`, data, (res) => res.data,
       'post', {withCredentials: true })
   }
 

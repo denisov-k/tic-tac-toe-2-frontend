@@ -122,7 +122,7 @@
         "registration": "Registration",
         "blow_up": "Blow up bonus",
         "referral_blow_up": "Frens blow up",
-        "referral_registration": "Frens bonus",
+        "referral_registration": "Frens registration",
         "task": "Task bonus"
       },
       "decrease": {
@@ -134,7 +134,7 @@
         "registration": "Registration",
         "blow_up": "Blow up bonus",
         "referral_blow_up": "Frens blow up",
-        "referral_registration": "Frens bonus",
+        "referral_registration": "Frens registration",
         "task": "Task bonus"
       },
       "decrease": {

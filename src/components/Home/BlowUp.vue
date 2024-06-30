@@ -1,7 +1,11 @@
 <template>
   <div id="blow-up" :class="userTeam === 'red' ? 'red': 'blue'">
     <div class="button enabled" v-on:click="blowUp" v-if="enabled && !inAction">
-      <span>{{ $t('blow_up') }} +{{ valueFormatted }}</span>
+      <span>{{ $t('blow_up') }} +{{ maxValue.toFixed(2) }}</span>
+    </div>
+    <div class="button" v-else-if="inAction">
+      <lottie :animation-data="require('@/assets/images/home/blow_up_loading.json')"
+              class="animation" :loop="true" :auto-play="true"></lottie>
     </div>
     <div class="button" v-else>
       <span class="recovery">{{ $t('recovery') }} +{{ valueFormatted }}</span>
@@ -36,7 +40,11 @@
       this.resetValue();
       this.reduceTimer();
       this.updateValue();
-      setInterval(this.reduceTimer, 1000);
+
+      setInterval(() => {
+        this.reduceTimer();
+        this.updateValue();
+      }, 1000);
       //setInterval(this.updateValue, 1000);
     },
     methods: {
@@ -44,21 +52,24 @@
         if (this.inAction)
           return;
 
-        this.$store.state.session.user.last_blow_up = Date.now();
-        this.resetTimer();
-        this.resetValue();
+        Telegram.WebApp.HapticFeedback.notificationOccurred("success");
 
         this.inAction = true;
         this.enabled = false;
-        // window.navigator.vibrate([200]);
+        this.$store.state.session.user.last_blow_up = Date.now();
+        this.resetTimer();
+        this.resetValue();
+        //this.value
+
         this.afterClick();
 
         this.service = new Service();
 
-        await this.service.blowUp();
-        await this.$store.dispatch('updateBalance');
+        this.service.blowUp().then(()=> {
+          this.$store.dispatch('updateBalance');
 
-        this.inAction = false;
+          this.inAction = false;
+        })
       },
       convertSecondsToTime(input) {
         const dateObj = new Date(input * 1000);
@@ -71,11 +82,9 @@
             ${seconds.toString().padStart(2, '0')}s`;
       },
       reduceTimer(){
-        this.updateValue();
         if (this.timer > 0) {
           this.timerFormatted = this.convertSecondsToTime(this.timer--);
-          this.enabled = false;
-        } else this.enabled = true;
+        }
       },
       resetTimer() {
         const lastBlowUp = this.$store.state.session.user.last_blow_up;
@@ -87,19 +96,40 @@
       },
       resetValue() {
         const lastBlowUp = this.$store.state.session.user.last_blow_up;
+        this.maxValue = lastBlowUp ? 10 : 100;
         this.value = (this.timeout - this.timer) / (this.timeout) * this.maxValue;
 
-        if (!lastBlowUp)
-          this.value = 100
-        else if (this.value > this.maxValue)
+        if (this.value > this.maxValue)
           this.value = this.maxValue;
 
         this.valueFormatted = (this.value).toFixed(3);
       },
       updateValue() {
         let newValue = (this.timeout - this.timer) / (this.timeout) * this.maxValue;
-        this.value = newValue > this.maxValue ? this.maxValue : newValue;
-        this.valueFormatted = (this.value).toFixed(3);
+        if (newValue > this.maxValue)
+          newValue = this.maxValue;
+
+        if (newValue < this.value)
+          this.valueFormatted = newValue.toFixed(2)
+        else
+          this.animateValue(this.value, newValue);
+        this.value = newValue;
+        //this.valueFormatted = (this.value).toFixed(3);
+        this.enabled = this.value === this.maxValue;
+      },
+      animateValue(start, end, duration = 1000) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+
+          this.valueFormatted = (progress * (end - start) + start).toFixed(2);
+
+          if (progress < 1) {
+            window.requestAnimationFrame(step);
+          }
+        };
+        window.requestAnimationFrame(step);
       }
     },
     computed: {
@@ -135,8 +165,6 @@
 
     border-radius: 10px;
     z-index: 1;
-    overflow: hidden;
-    animation: gradient-animation 30s ease infinite;
 
     &:before {
       content: "";
@@ -161,30 +189,29 @@
       width: 100%;
       z-index: -2;
       transform: rotate(0deg);
+      filter: blur(10px);
     }
   }
   .red .button.enabled {
     background-color: #FF0A47;
-    box-shadow: 0 0 15px 4px #FF0A47;
 
     &:after {
-      background: linear-gradient(45deg, #FF0A47, rgb(255, 255, 255));
-      animation: border-animation 3s ease alternate infinite;
+      background: linear-gradient(45deg, #FF0A47, #FFF, #FF0A47, #FFF);
+      animation: border-animation 7s linear alternate infinite;
       -webkit-animation-play-state: running;
       animation-play-state: running;
-      background-size: 300% 300%;
+      background-size: 200% 200%;
     }
   }
   .blue .button.enabled {
     background-image: linear-gradient(210deg, #017ad1, #3badff);
-    box-shadow: 0 0 15px 4px #3BADFF;
 
     &:after {
-      background: linear-gradient(89deg, #3c94d3, rgb(229 244 255));
-      animation: border-animation 3s ease alternate infinite;
+      background: linear-gradient(89deg, #3c94d3, #FFF, #3c94d3, #FFF);
+      animation: border-animation 7s linear alternate infinite;
       -webkit-animation-play-state: running;
       animation-play-state: running;
-      background-size: 300% 300%;
+      background-size: 200% 200%;
     }
   }
   .recovery {
@@ -196,28 +223,25 @@
     color: #565656;
     font-size: 1.5vh;
   }
+  .animation {
+    display: flex;
+    height: 9vh;
+  }
+  .animation >>> path {
+    stroke: #5c5c5c;
+  }
 
   @keyframes border-animation {
     0% {
-      background-position: 0% 50%;
+      background-position: 0 0;
     }
-    50% {
-      background-position: 95% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
 
-  @keyframes gradient-animation {
-    0% {
-      background-position: 0% 50%;
-    }
     50% {
-      background-position: 95% 50%;
+      background-position: 100% 0;
     }
+
     100% {
-      background-position: 0% 50%;
+      background-position: 0 0;
     }
   }
 </style>

@@ -20,6 +20,8 @@
     },
     methods: {
       chooseTeam(team) {
+        Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+
         Promise.all([
             this.afterClick(team),
             this.$store.dispatch('setTeam', team)

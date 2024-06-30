@@ -2,6 +2,8 @@
   <div id="alert" v-show="isShowing">
     <inline-svg :src="require('@/assets/images/tasks/done.svg')" class="icon"></inline-svg>
     <span>{{ message }}</span>
+    <inline-svg :src="require('@/assets/images/tasks/coin.svg')" class="coin"></inline-svg>
+    <span>!</span>
   </div>
 </template>
 
@@ -10,7 +12,7 @@
     name: "Alert",
     data: () => {
       return {
-        message: '',
+        message: 'You got + 0',
         isShowing: false
       }
     },
@@ -42,5 +44,10 @@
   }
   .icon {
     height: 6.8vh;
+  }
+  svg.coin {
+    width: auto;
+    height: 3vh;
+    margin: 0 5px;
   }
 </style>

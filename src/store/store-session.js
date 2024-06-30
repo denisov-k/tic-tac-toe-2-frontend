@@ -6,7 +6,8 @@ import Config from "../utils/Config";
 const Session = {
   state: {
     user: {},
-    lastUpdate: null
+    lastUpdate: null,
+    isLoading: false
   },
   mutations: {
     [Mutations.SET_USER](state, user) {
@@ -21,6 +22,9 @@ const Session = {
     },
     [Mutations.UPDATE_STATE](state) {
       state.lastUpdate = (new Date()).toDateString();
+    },
+    [Mutations.SET_LOADING_STATUS](state, status) {
+      state.isLoading = status;
     }
   },
   actions: {
@@ -59,7 +63,7 @@ const Session = {
     },
   },
   getters: {
-
+    getLoadingStatus: state => state.isLoading
   }
 }
 export default Session;

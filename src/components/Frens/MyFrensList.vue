@@ -4,9 +4,14 @@
     <div class="refs-list">
       <div class="ref-item" v-for="ref in refs" :key="ref.id">
         <inline-svg :src="require('@/assets/images/frens/fren.svg')" class="icon" />
-        <div class="name">
-          <span :class="ref.team === 'red' ? 'red': 'blue'">{{ ref.first_name }}</span>
-          <span class="frens-count">{{ ref.refs }}</span>
+        <div class="info">
+          <div>
+            <span :class="ref.team === 'red' ? 'red': 'blue'">{{ ref.first_name }}</span>
+          </div>
+          <div>
+            <inline-svg :src="require('@/assets/images/frens/frens-of-fren.svg')" class="small-icon" />
+            <span class="frens-count">{{ ref.refs }}</span>
+          </div>
         </div>
         <div class="balance">
           <inline-svg :src="require('@/assets/images/frens/coin.svg')" class="coin" />
@@ -91,10 +96,19 @@
     display: flex;
     align-items: center;
   }
-  .ref-item .name {
+  .ref-item .info {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+  }
+  .ref-item .info div {
+    display: flex;
+    align-items: center;
+  }
+  svg.small-icon {
+    width: auto;
+    height: 1.5vh;
+    margin-right: 1vw;
   }
   .coin {
     width: auto;

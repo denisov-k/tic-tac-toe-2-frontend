@@ -1,7 +1,7 @@
 <template>
   <div id="invite-button" v-on:click="onClick">
 
-      <span>{{ $t('invite') }}</span>
+      <div>{{ $t('invite') }}</div>
 
   </div>
 </template>
@@ -16,17 +16,6 @@
 </script>
 
 <style scoped>
-  @keyframes border-animation {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 95% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
   #invite-button {
     position: relative;
     display: flex;
@@ -35,7 +24,6 @@
     width: calc(100% - 24px);
     color: white;
     cursor: pointer;
-    box-shadow: 0 0 15px 4px #1a9255;
     height: 7.8vh;
     font-size: 1.9vh;
     background-image: linear-gradient(210deg, #04B75C, #00A350);
@@ -44,8 +32,6 @@
     -webkit-tap-highlight-color: transparent;
     border-radius: 10px;
     z-index: 1;
-    overflow: hidden;
-    animation: gradient-animation 30s ease infinite;
 
     &:before {
       content: "";
@@ -70,13 +56,26 @@
       width: 100%;
       z-index: -2;
       transform: rotate(0deg);
-      background: linear-gradient(100deg, #00A350, #ffffff85);
-      animation: border-animation-0466b1bc 3s ease alternate infinite;
+      background: linear-gradient(100deg, #00A350, #FFF, #00A350, #FFF, #00A350);
+      animation: border-animation 7s linear infinite;
       animation-play-state: running;
       background-size: 200% 200%;
+      filter: blur(10px);
     }
   }
+  @keyframes border-animation {
+    0% {
+      background-position: 0 0;
+    }
 
+    50% {
+      background-position: 100% 0;
+    }
+
+    100% {
+      background-position: 0 0;
+    }
+  }
 </style>
 
 <i18n>

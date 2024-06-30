@@ -32,6 +32,7 @@
         this.service = new Service();
 
         await this.service.claimBalance().then(() => {
+          Telegram.WebApp.HapticFeedback.notificationOccurred("success");
           this.$store.dispatch('updateBalance');
         })
       }

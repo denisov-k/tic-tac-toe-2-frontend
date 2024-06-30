@@ -12,43 +12,43 @@
 </template>
 
 <script>
-export default {
-  components: {
+  export default {
+    components: {
 
-  },
-  data() {
-    return {
-      navigationButtons: [
-        { name: 'home', caption: this.$t('home'), image: require('../assets/images/navigation/home_nav.json') },
-        { name: 'changelog', caption: this.$t('changelog'), image: require('../assets/images/navigation/changelog_nav.json') },
-        { name: 'tasks', caption: this.$t('tasks'), image: require('../assets/images/navigation/tasks_nav.json') },
-        { name: 'frens', caption: this.$t('frens'), image: require('../assets/images/navigation/frens_nav.json') },
-      ]
-    }
-  },
-  computed: {
-
-  },
-  methods: {
-    goTo(route, el) {
-      el.anim.goToAndPlay(15, true);
-      if (this.$route.name !== route)
-        this.$router.push({ name: route });
     },
-    isButtonSelected(button) {
-
-      return this.$route.name === button.name
+    data() {
+      return {
+        navigationButtons: [
+          { name: 'home', caption: this.$t('home'), image: require('../assets/images/navigation/home_nav.json') },
+          { name: 'changelog', caption: this.$t('changelog'), image: require('../assets/images/navigation/changelog_nav.json') },
+          { name: 'tasks', caption: this.$t('tasks'), image: require('../assets/images/navigation/tasks_nav.json') },
+          { name: 'frens', caption: this.$t('frens'), image: require('../assets/images/navigation/frens_nav.json') },
+        ]
+      }
     },
-    loopComplete(image) {
-      //image.goToAndStop(0);
+    computed: {
+
+    },
+    methods: {
+      goTo(route, el) {
+        el.anim.goToAndPlay(15, true);
+        if (this.$route.name !== route)
+          this.$router.push({ name: route });
+      },
+      isButtonSelected(button) {
+
+        return this.$route.name === button.name
+      },
+      loopComplete(image) {
+        //image.goToAndStop(0);
+      }
+    },
+    mounted: function () {
+      Object.values(this.$refs).forEach(([item]) => {
+        item.anim.goToAndStop(item.anim.totalFrames, true);
+      })
     }
-  },
-  mounted: function () {
-    Object.values(this.$refs).forEach(([item]) => {
-      item.anim.goToAndStop(item.anim.totalFrames, true);
-    })
   }
-}
 </script>
 
 <i18n>

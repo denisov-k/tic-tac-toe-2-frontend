@@ -14,7 +14,7 @@
       <div class="button completed" v-if="task.completed">
         <inline-svg :src="require('@/assets/images/tasks/completed.svg')" class="completed-icon"></inline-svg>
       </div>
-      <div class="button start" v-on:click="startTask(index)" v-else-if="taskInProgressIndex !== index">
+      <div class="button start" v-on:click="startTask(index)" v-else-if="!taskInProgress.includes(index)">
         {{ $t('start') }}
       </div>
       <div class="button claim" v-on:click="claimTask(index)" v-else>
@@ -36,7 +36,7 @@
     },
     data() {
       return {
-        taskInProgressIndex: -1,
+        taskInProgress: [],
         tasksList: [],
         icons: {
           'x': require('@/assets/images/tasks/x.svg'),
@@ -51,14 +51,14 @@
     },
     methods: {
       startTask(index) {
-        setTimeout(() => this.taskInProgressIndex = index, 1000);
+        setTimeout(() => this.taskInProgress.push(index), 1000);
 
         Telegram.WebApp.openLink(this.tasks[index].link);
       },
       claimTask(index) {
         this.service.claimTask(this.tasksList[index].id).then(() => {
           this.tasksList[index].completed = true;
-          this.taskInProgressIndex = -1;
+          Telegram.WebApp.HapticFeedback.notificationOccurred("success");
           this.afterComplete(this.tasksList[index]);
         })
       }

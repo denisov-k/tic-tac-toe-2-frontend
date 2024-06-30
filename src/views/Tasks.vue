@@ -94,12 +94,12 @@
     "en": {
       "header": "tasks available",
       "description": "We’ll reward you immediately with points after each task completion",
-      "alert": "You got + {award} XO Points!"
+      "alert": "You got + {award}"
     },
     "ru": {
       "header": "tasks available",
       "description": "We’ll reward you immediately with points after each task completion",
-      "alert": "You got + {award} XO Points!"
+      "alert": "You got + {award}"
     }
   }
 </i18n>
