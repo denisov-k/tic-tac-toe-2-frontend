@@ -1,5 +1,7 @@
 # tic-tac-toe-frontend
 
+Demo: https://t.me/TicTacTon_bot/tic_tac_ton
+
 ## Project setup
 ```
 yarn install
